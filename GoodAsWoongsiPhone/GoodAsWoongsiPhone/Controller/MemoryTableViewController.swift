@@ -35,6 +35,8 @@ class MemoryTableViewController: UIViewController {
         let radius = imageView.frame.height / 2
         imageView.layer.cornerRadius = radius
         imageView.contentMode = .scaleAspectFill
+        
+        
     }
 
     

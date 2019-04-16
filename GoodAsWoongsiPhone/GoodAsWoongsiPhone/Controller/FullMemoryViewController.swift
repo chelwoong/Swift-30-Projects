@@ -31,7 +31,6 @@ class FullMemoryViewController: UIViewController {
             text += rememberLabel?.text ?? ""
             self.remeberButton.setTitle(text, for: .normal)
         }
-        print(memoryImageView)
         imageView.image = memoryImageView?.image
     }
     
