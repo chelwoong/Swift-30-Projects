@@ -17,6 +17,7 @@
 		4CDDC670225E417800854A02 /* MemoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC66F225E417800854A02 /* MemoryTableViewController.swift */; };
 		4CDDC6BE22638D9D00854A02 /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC6BD22638D9D00854A02 /* MemoryTableViewCell.swift */; };
 		4CDDC6E12264C59B00854A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CDDC6E02264C59B00854A02 /* Assets.xcassets */; };
+		4CDDC6E32264DDF900854A02 /* FullMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDC6E22264DDF900854A02 /* FullMemoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4CDDC66F225E417800854A02 /* MemoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewController.swift; sourceTree = "<group>"; };
 		4CDDC6BD22638D9D00854A02 /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
 		4CDDC6E02264C59B00854A02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4CDDC6E22264DDF900854A02 /* FullMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullMemoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				4C07F28522579A9800EE5678 /* AboutViewController.swift */,
+				4CDDC6E22264DDF900854A02 /* FullMemoryViewController.swift */,
 				4CDDC66F225E417800854A02 /* MemoryTableViewController.swift */,
 			);
 			path = Controller;
@@ -178,6 +181,7 @@
 				4C07F27422576EBE00EE5678 /* GoodAsWoongsiPhone.xcdatamodeld in Sources */,
 				4C07F26E22576EBE00EE5678 /* ViewController.swift in Sources */,
 				4CDDC670225E417800854A02 /* MemoryTableViewController.swift in Sources */,
+				4CDDC6E32264DDF900854A02 /* FullMemoryViewController.swift in Sources */,
 				4C07F28622579A9800EE5678 /* AboutViewController.swift in Sources */,
 				4CDDC6BE22638D9D00854A02 /* MemoryTableViewCell.swift in Sources */,
 				4C07F26C22576EBE00EE5678 /* AppDelegate.swift in Sources */,

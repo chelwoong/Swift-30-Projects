@@ -14,6 +14,7 @@ class MemoryTableViewController: UIViewController {
     
     var memories: [Memory]?
     var cellIdentifire = "memoryCell"
+    @IBOutlet weak var tableView: UITableView!
     
     // MARK: ViewController override method
 
@@ -23,36 +24,38 @@ class MemoryTableViewController: UIViewController {
         memories = [
             Memory(memory: "mju univ", memoryImageName: "mjuLogo", fullScreenImageName: "mjuLogo"),
             Memory(memory: "learn React", memoryImageName: "reactLogo", fullScreenImageName: "reactLogo"),
-            Memory(memory: "start iOS", memoryImageName: "swiftLogo", fullScreenImageName: "swiftLogo"),
+            Memory(memory: "start Swift", memoryImageName: "swiftLogo", fullScreenImageName: "swiftLogo"),
             Memory(memory: "be iOS Developer", memoryImageName: "iosLogo", fullScreenImageName: "iosLogo")
         ]
         
-        
     }
     
-    func setToRound(imageView: UIImageView) -> UIImageView {
+    func setToRound(imageView: UIImageView) {
 
-        let iv = imageView
-        iv.layer.cornerRadius = 22
-        iv.contentMode = .scaleAspectFit
-        
-        return iv
-//
-//        if let iv = imageView {
-//            iv.layer.cornerRadius = 22
-//            iv.contentMode = .scaleAspectFit
-//        }
+        let radius = imageView.frame.height / 2
+        imageView.layer.cornerRadius = radius
+        imageView.contentMode = .scaleAspectFill
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//     In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//         Get the new view controller using segue.destination.
+//         Pass the selected object to the new view controller.
+        
+        guard let nextViewController: FullMemoryViewController = segue.destination as? FullMemoryViewController else {
+            return
+        }
+        
+        guard let cell: MemoryTableViewCell = sender as? MemoryTableViewCell else {
+            return
+        }
+        
+        nextViewController.rememberLabel = cell.memoryLabel
+        nextViewController.memoryImageView = cell.memoryImageView
     }
-    */
 
 }
 
@@ -75,9 +78,7 @@ extension MemoryTableViewController: UITableViewDataSource {
             cell.memoryImageView.image = UIImage(named: imageName)
         }
         
-        cell.imageView?.layer.cornerRadius = 22
-        cell.imageView?.contentMode = .scaleAspectFit
-        
+        setToRound(imageView: cell.memoryImageView)
         
         return cell
     }
@@ -90,5 +91,8 @@ extension MemoryTableViewController: UITableViewDataSource {
 // MARK: UITableViewDelegate
 
 extension MemoryTableViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+    }
 }
