@@ -1,5 +1,8 @@
 # GoodAsWoongsiPhone
 
+# ScreenShot
+![ScreenShot](./GoodAsWoongsiPhone.gif)
+
 # 배운내용
 
 - [TableView](#tableview)
