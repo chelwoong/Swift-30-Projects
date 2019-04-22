@@ -13,6 +13,7 @@
 		4C462EB722687E9A00A08A61 /* StopWatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C462EB522687E9A00A08A61 /* StopWatch.xcdatamodeld */; };
 		4C462EB922687E9C00A08A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C462EB822687E9C00A08A61 /* Assets.xcassets */; };
 		4C462EBC22687E9C00A08A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C462EBA22687E9C00A08A61 /* LaunchScreen.storyboard */; };
+		4CA02E35226DDD8700164F5F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA02E34226DDD8700164F5F /* Stopwatch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4C462EB822687E9C00A08A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C462EBB22687E9C00A08A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C462EBD22687E9C00A08A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CA02E34226DDD8700164F5F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				4C462EAE22687E9A00A08A61 /* AppDelegate.swift */,
 				4C462EB022687E9A00A08A61 /* ViewController.swift */,
+				4CA02E34226DDD8700164F5F /* Stopwatch.swift */,
 				4C462EB222687E9A00A08A61 /* Main.storyboard */,
 				4C462EB822687E9C00A08A61 /* Assets.xcassets */,
 				4C462EBA22687E9C00A08A61 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C462EB722687E9A00A08A61 /* StopWatch.xcdatamodeld in Sources */,
+				4CA02E35226DDD8700164F5F /* Stopwatch.swift in Sources */,
 				4C462EB122687E9A00A08A61 /* ViewController.swift in Sources */,
 				4C462EAF22687E9A00A08A61 /* AppDelegate.swift in Sources */,
 			);
