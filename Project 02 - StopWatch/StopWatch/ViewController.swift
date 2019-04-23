@@ -10,51 +10,73 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var elapsedTimeLabel: UILabel!
+    
+    
+    // MARK: - Variables and Properties
     var timer = Timer()
     var counter = 0.0
-    var isRunning = false
+    var isTimerRunning = false
+    let watch = Stopwatch()
+    let interval = 0.13
+ 
+    // MARK: - UI components
+    @IBOutlet weak var elapsedTimeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
-    let watch = Stopwatch()
     
+    // MARK: - Actions
     @IBAction func startButtonTapped(_ sender: Any) {
-       Timer.scheduledTimer(
-        timeInterval: 0.1,
+       timer = Timer.scheduledTimer(
+        timeInterval: interval,
         target: self,
-        selector: #selector(updateElapsedTimeLabel(timer:)),
+        selector: #selector(updateElapsedTimeLabel),
         userInfo: nil,
         repeats: true
         )
         
-        watch.start()
+        startButton.isEnabled = false
+        stopButton.isEnabled = true
+        isTimerRunning = true
+    }
+    
+    @IBAction func stopButtonTapped(_ sender: Any) {
+        startButton.isEnabled = true
+        stopButton.isEnabled = false
+        
+        isTimerRunning = false
+        timer.invalidate()
+        
         
     }
     
-    @IBAction func stopButtonDidTouch(_ sender: Any) {
-        watch.stop()
-    }
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
     }
     
+    // MARK: - Helpers
     @objc
-    func updateElapsedTimeLabel(timer: Timer) {
-        if watch.isRunning {
-            let minutes = Int(watch.elapsedTime) / 60
-            let seconds = Int(watch.elapsedTime) % 60
-            let tenOfSeconds = Int(watch.elapsedTime*10) % 100
-            print(watch.elapsedTime)
-            print(Int(watch.elapsedTime))
+    func updateElapsedTimeLabel() {
+        
+        if isTimerRunning {
+            counter += interval
+            // HH:MM:SS:_
+            let flooredCounter = Int(counter)
             
-            elapsedTimeLabel.text = String(format: "%02d:%02d:%02d", minutes, seconds, tenOfSeconds)
+            let hour = flooredCounter/3600
+            
+            let minute = (flooredCounter % 3600)/60
+            let seconde = (flooredCounter % 3600) % 60
+            let decisecond = Int(counter*100) % 100
+            print(counter)
+            elapsedTimeLabel.text = String(format: "%02d:%02d:%02d:%02d", hour, minute, seconde, decisecond)
             
         } else {
-            timer.invalidate()
+            // when timer running
         }
+        
     }
 
 }
