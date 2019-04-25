@@ -19,27 +19,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoH-Cl-m8V">
-                                <rect key="frame" x="158.5" y="144" width="97" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="121" y="144" width="172.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsW-U9-QMM">
-                                <rect key="frame" x="48" y="215" width="34" height="30"/>
+                                <rect key="frame" x="48" y="230" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="startOrStopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tXo-Ff-xwU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e52-WV-mqt">
-                                <rect key="frame" x="279" y="215" width="32" height="30"/>
+                                <rect key="frame" x="279" y="230" width="32" height="30"/>
                                 <state key="normal" title="Stop"/>
                                 <connections>
                                     <action selector="LapOrResetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J4B-At-aDU"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qnq-9l-iT8">
-                                <rect key="frame" x="0.0" y="295" width="414" height="567"/>
+                                <rect key="frame" x="0.0" y="310" width="414" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="bfb-4o-VGV" customClass="LapTableViewCell" customModule="StopWatch" customModuleProvider="target">
@@ -82,14 +82,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="XbC-b6-CqQ"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucf-nr-heL" userLabel="LapTimeLabel">
+                                <rect key="frame" x="196.5" y="113" width="97" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FsW-U9-QMM" firstAttribute="top" secondItem="UoH-Cl-m8V" secondAttribute="bottom" constant="50" id="0XR-9s-u1q"/>
                             <constraint firstItem="UoH-Cl-m8V" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="186" id="2ht-B0-FrT"/>
+                            <constraint firstItem="UoH-Cl-m8V" firstAttribute="top" secondItem="ucf-nr-heL" secondAttribute="bottom" constant="10" id="BPR-fy-saG"/>
                             <constraint firstItem="UoH-Cl-m8V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BSa-MX-qT9"/>
                             <constraint firstItem="qnq-9l-iT8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ISh-OF-jKE"/>
                             <constraint firstItem="UoH-Cl-m8V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="KE7-aW-Rb1"/>
+                            <constraint firstItem="ucf-nr-heL" firstAttribute="trailing" secondItem="UoH-Cl-m8V" secondAttribute="trailing" id="MTC-CO-d6J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qnq-9l-iT8" secondAttribute="bottom" id="W1L-Is-HTf"/>
                             <constraint firstItem="e52-WV-mqt" firstAttribute="top" secondItem="UoH-Cl-m8V" secondAttribute="bottom" constant="50" id="Xaj-r9-5Id"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qnq-9l-iT8" secondAttribute="trailing" id="cPM-P3-aHM"/>
@@ -103,6 +111,7 @@
                     <connections>
                         <outlet property="LapOrResetButton" destination="e52-WV-mqt" id="DeP-Ll-gCa"/>
                         <outlet property="elapsedTimeLabel" destination="UoH-Cl-m8V" id="IuX-FL-Gcv"/>
+                        <outlet property="lapTimeLabel" destination="ucf-nr-heL" id="j7f-bz-iMz"/>
                         <outlet property="startOrStopButton" destination="FsW-U9-QMM" id="eCy-XP-f8c"/>
                         <outlet property="tablewView" destination="qnq-9l-iT8" id="uqA-Oe-aQc"/>
                     </connections>

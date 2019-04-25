@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var lapTime: String = ""
  
     // MARK: - UI components
+    @IBOutlet weak var lapTimeLabel: UILabel!
     @IBOutlet weak var elapsedTimeLabel: UILabel!
     @IBOutlet weak var startOrStopButton: UIButton!
     @IBOutlet weak var LapOrResetButton: UIButton!
@@ -39,12 +40,15 @@ class ViewController: UIViewController {
             
             startOrStopButton.setTitle("Stop", for: .normal)
             LapOrResetButton.setTitle("Lap", for: .normal)
+            LapOrResetButton.tintColor = UIColor.green
             isTimerRunning = true
         } else {
             timer.invalidate()
             startOrStopButton.setTitle("Start", for: .normal)
             LapOrResetButton.setTitle("Reset", for: .normal)
+            
             isTimerRunning = false
+            LapOrResetButton.tintColor = UIColor.red
         }
     }
     
@@ -54,13 +58,13 @@ class ViewController: UIViewController {
             
             laps.append(Lap(lapNumber: laps.count, lapTime: lapTime))
             tablewView.reloadData()
-            print(laps)
-            
-            
             
         } else {
             print("reset")
-            LapOrResetButton.setTitle("Lap", for: .normal)
+            counter = 0.0
+            elapsedTimeLabel.text = "00:00:00:00"
+            laps.removeAll()
+            tablewView.reloadData()
         }
         
         
