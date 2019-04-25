@@ -8,27 +8,14 @@
 
 import Foundation
 
-class Stopwatch {
+class Stopwatch: NSObject {
     
-    private var startTime: NSDate?
+    var timer: Timer
+    var counter: Double
     
-    var elapsedTime: TimeInterval {
-        if let startTime = self.startTime {
-            return -startTime.timeIntervalSinceNow
-        } else {
-            return 0
-        }
+    override init() {
+        timer = Timer()
+        counter = 0.0
+        
     }
-    var isRunning: Bool {
-        return startTime != nil
-    }
-    
-    func start() {
-//        startTime = NSDate()
-    }
-    
-    func stop() {
-        startTime = nil
-    }
-    
 }

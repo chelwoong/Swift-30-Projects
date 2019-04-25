@@ -11,12 +11,13 @@ import UIKit
 class ViewController: UIViewController {
 
     // MARK: - Variables and Properties
-    var timer = Timer()
-    var counter = 0.0
+    let mainTimer = Stopwatch()
+    let lapTimer = Stopwatch()
     var isTimerRunning = false
     let interval = 0.13
     var laps = [Lap]()
     var lapTime: String = ""
+    
  
     // MARK: - UI components
     @IBOutlet weak var lapTimeLabel: UILabel!
@@ -30,20 +31,34 @@ class ViewController: UIViewController {
     // MARK: - Actions
     @IBAction func startOrStopButtonTapped(_ sender: Any) {
         if !isTimerRunning {
-            timer = Timer.scheduledTimer(
+            mainTimer.timer = Timer.scheduledTimer(
                 timeInterval: interval,
                 target: self,
-                selector: #selector(updateElapsedTimeLabel),
+                selector: #selector(updateMainTimer),
                 userInfo: nil,
                 repeats: true
             )
+            
+            lapTimer.timer = Timer.scheduledTimer(
+                timeInterval: interval,
+                target: self,
+                selector: #selector(updateLapTimer),
+                userInfo: nil,
+                repeats: true
+            )
+            
+            RunLoop.current.add(mainTimer.timer, forMode: .common)
+            RunLoop.current.add(lapTimer.timer, forMode: .common)
+            mainTimer.timer.tolerance = 0.1
+            lapTimer.timer.tolerance = 0.1
             
             startOrStopButton.setTitle("Stop", for: .normal)
             LapOrResetButton.setTitle("Lap", for: .normal)
             LapOrResetButton.tintColor = UIColor.green
             isTimerRunning = true
         } else {
-            timer.invalidate()
+            mainTimer.timer.invalidate()
+            lapTimer.timer.invalidate()
             startOrStopButton.setTitle("Start", for: .normal)
             LapOrResetButton.setTitle("Reset", for: .normal)
             
@@ -54,17 +69,18 @@ class ViewController: UIViewController {
     
     @IBAction func LapOrResetButtonTapped(_ sender: Any) {
         if isTimerRunning {
-            print("lap")
+            // lap clicked
             
             laps.append(Lap(lapNumber: laps.count, lapTime: lapTime))
+            lapTimer.counter = 0.0
+            lapTimeLabel.text = "00:00:00:00"
             tablewView.reloadData()
             
         } else {
-            print("reset")
-            counter = 0.0
-            elapsedTimeLabel.text = "00:00:00:00"
-            laps.removeAll()
-            tablewView.reloadData()
+            // reset clicked
+            resetTimer(mainTimer, elapsedTimeLabel)
+            resetTimer(lapTimer, lapTimeLabel)
+            
         }
         
         
@@ -79,11 +95,31 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Helpers
+    
+    func resetTimer(_ timer: Stopwatch, _ label: UILabel) {
+        timer.counter = 0.0
+        label.text = "00:00:00:00"
+        laps.removeAll()
+        tablewView.reloadData()
+    }
+    
     @objc
-    func updateElapsedTimeLabel() {
+    func updateMainTimer() {
+        updateElapsedTimeLabel(mainTimer, elapsedTimeLabel)
+    }
+    
+    @objc
+    func updateLapTimer() {
+        updateElapsedTimeLabel(lapTimer, lapTimeLabel)
+    }
+    
+    
+    func updateElapsedTimeLabel(_ stopwatch: Stopwatch, _ label: UILabel) {
         
         if isTimerRunning {
-            counter += interval
+            
+            stopwatch.counter = stopwatch.counter + interval
+            let counter = stopwatch.counter
             // HH:MM:SS:_
             let flooredCounter = Int(counter)
             
@@ -93,7 +129,7 @@ class ViewController: UIViewController {
             let seconde = (flooredCounter % 3600) % 60
             let decisecond = Int(counter*100) % 100
             lapTime = String(format: "%02d:%02d:%02d:%02d", hour, minute, seconde, decisecond)
-            elapsedTimeLabel.text = lapTime
+            label.text = lapTime
             
         } else {
             // when timer running
@@ -101,10 +137,10 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - extension TableView
+
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return laps?.count ?? 0
-        print("laps Count: \(laps.count)")
         return laps.count
     }
     
@@ -122,6 +158,8 @@ extension ViewController: UITableViewDataSource {
     }
     
 }
+
+// MARK: - extension Delegate
 
 extension ViewController: UITableViewDelegate {
     
