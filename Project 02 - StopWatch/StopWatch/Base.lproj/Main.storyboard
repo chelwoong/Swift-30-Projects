@@ -18,29 +18,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoH-Cl-m8V">
-                                <rect key="frame" x="171.5" y="144" width="71.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoH-Cl-m8V">
+                                <rect key="frame" x="158.5" y="144" width="97" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsW-U9-QMM">
-                                <rect key="frame" x="50" y="214.5" width="30" height="30"/>
-                                <state key="normal" title="Play"/>
+                                <rect key="frame" x="48" y="215" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
                                 <connections>
-                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tXo-Ff-xwU"/>
+                                    <action selector="startOrStopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tXo-Ff-xwU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e52-WV-mqt">
-                                <rect key="frame" x="279" y="165" width="32" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e52-WV-mqt">
+                                <rect key="frame" x="279" y="215" width="32" height="30"/>
                                 <state key="normal" title="Stop"/>
                                 <connections>
-                                    <action selector="stopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J4B-At-aDU"/>
+                                    <action selector="LapOrResetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J4B-At-aDU"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qnq-9l-iT8">
-                                <rect key="frame" x="0.0" y="294.5" width="414" height="567.5"/>
+                                <rect key="frame" x="0.0" y="295" width="414" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="bfb-4o-VGV" customClass="LapTableViewCell" customModule="StopWatch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bfb-4o-VGV" id="bhx-Ic-KcY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESR-u4-1iP" userLabel="lapNumberLabel">
+                                                    <rect key="frame" x="45" y="11" width="42" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKv-fc-aDn" userLabel="lapTimeLabel">
+                                                    <rect key="frame" x="327" y="11" width="42" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ESR-u4-1iP" firstAttribute="top" secondItem="bhx-Ic-KcY" secondAttribute="topMargin" id="Bfb-zC-90X"/>
+                                                <constraint firstItem="lKv-fc-aDn" firstAttribute="bottom" secondItem="bhx-Ic-KcY" secondAttribute="bottomMargin" id="CoN-Jv-IQa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lKv-fc-aDn" secondAttribute="trailing" constant="25" id="Jds-JH-BIR"/>
+                                                <constraint firstItem="ESR-u4-1iP" firstAttribute="bottom" secondItem="bhx-Ic-KcY" secondAttribute="bottomMargin" id="KWN-IC-pBU"/>
+                                                <constraint firstItem="lKv-fc-aDn" firstAttribute="top" secondItem="bhx-Ic-KcY" secondAttribute="topMargin" id="RW0-aS-jgV"/>
+                                                <constraint firstItem="ESR-u4-1iP" firstAttribute="leading" secondItem="bhx-Ic-KcY" secondAttribute="leadingMargin" constant="25" id="TV6-Ix-Xfd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lapNumberLabel" destination="ESR-u4-1iP" id="fsN-SX-VCT"/>
+                                            <outlet property="lapTimeLabel" destination="lKv-fc-aDn" id="qLa-t7-gXc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="txq-v6-69q"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="XbC-b6-CqQ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -61,9 +101,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="LapOrResetButton" destination="e52-WV-mqt" id="DeP-Ll-gCa"/>
                         <outlet property="elapsedTimeLabel" destination="UoH-Cl-m8V" id="IuX-FL-Gcv"/>
-                        <outlet property="startButton" destination="FsW-U9-QMM" id="eCy-XP-f8c"/>
-                        <outlet property="stopButton" destination="e52-WV-mqt" id="DeP-Ll-gCa"/>
+                        <outlet property="startOrStopButton" destination="FsW-U9-QMM" id="eCy-XP-f8c"/>
+                        <outlet property="tablewView" destination="qnq-9l-iT8" id="uqA-Oe-aQc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
