@@ -1,3 +1,7 @@
+# Stopwatch
+# ScreenShot
+![stopwatch](./StopWatch.gif)
+
 # 배운내용
 
 - [Swift Timer](#swift-timer)
