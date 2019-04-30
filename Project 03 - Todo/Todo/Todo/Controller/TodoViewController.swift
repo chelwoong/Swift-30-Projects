@@ -10,9 +10,14 @@ import UIKit
 
 class TodoViewController: UIViewController {
 
+    // MARK: - Variables and Properties
+    var cellIdentifire = "todoCell"
+    var todos = [Todo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
 
 
@@ -22,11 +27,13 @@ class TodoViewController: UIViewController {
 extension TodoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifire, for: indexPath)
+        
+        return cell
     }
     
     

@@ -14,6 +14,7 @@
 		4CBB12AB227739270019F5EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBB12AA227739270019F5EE /* Assets.xcassets */; };
 		4CBB12AE227739270019F5EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBB12AC227739270019F5EE /* LaunchScreen.storyboard */; };
 		4CBB12B922773ACB0019F5EE /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12B822773ACB0019F5EE /* Todo.swift */; };
+		4CBB12BB227750C30019F5EE /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12BA227750C30019F5EE /* AddTodoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4CBB12AD227739270019F5EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CBB12AF227739270019F5EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CBB12B822773ACB0019F5EE /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		4CBB12BA227750C30019F5EE /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				4CBB12A2227739240019F5EE /* TodoViewController.swift */,
+				4CBB12BA227750C30019F5EE /* AddTodoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBB12A3227739240019F5EE /* TodoViewController.swift in Sources */,
+				4CBB12BB227750C30019F5EE /* AddTodoViewController.swift in Sources */,
 				4CBB12A9227739240019F5EE /* Todo.xcdatamodeld in Sources */,
 				4CBB12A1227739240019F5EE /* AppDelegate.swift in Sources */,
 				4CBB12B922773ACB0019F5EE /* Todo.swift in Sources */,
