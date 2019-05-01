@@ -10,6 +10,17 @@ import UIKit
 
 class AddTodoViewController: UIViewController {
 
+    @IBOutlet weak var imageSelectButton: UIButton!
+    @IBOutlet weak var todoTextLabel: UILabel!
+    @IBOutlet weak var todoTextField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    
+    @IBAction func imageSelectButtonTapped(_ sender: Any) {
+        print("button Tapped")
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
