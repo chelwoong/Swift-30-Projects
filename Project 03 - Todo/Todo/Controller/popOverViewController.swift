@@ -15,9 +15,7 @@ class popOverViewController: UIViewController {
     let cellId = "emojiCell"
     
     func fetchEmojis(){
-        
-        
-        
+
         let emojiRanges = [
             0x1F601...0x1F64F,
             0x2702...0x27B0,
@@ -46,6 +44,9 @@ class popOverViewController: UIViewController {
          fetchEmojis()
     }
     
+    override func viewWillLayoutSubviews() {
+        preferredContentSize = CGSize(width: self.view.bounds.width, height: 200)
+    }
 
     /*
     // MARK: - Navigation
@@ -72,7 +73,9 @@ extension popOverViewController: UICollectionViewDataSource {
         
         guard let cell: emojiCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? emojiCollectionViewCell else {return defaultCell}
         
-        cell.emojiImageView.image = emojiList[indexPath.section][indexPath.item].image()
+        
+        cell.emojiButton.setImage(emojiList[indexPath.section][indexPath.item].image(), for: .normal)
+        
         return cell
     }
 }
@@ -102,6 +105,6 @@ extension String {
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image?.withRenderingMode(.alwaysOriginal)
     }
 }

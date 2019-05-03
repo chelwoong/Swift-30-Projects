@@ -10,5 +10,6 @@ import UIKit
 
 class emojiCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var emojiImageView: UIImageView!
+    @IBOutlet weak var emojiButton: UIButton!
+    
 }

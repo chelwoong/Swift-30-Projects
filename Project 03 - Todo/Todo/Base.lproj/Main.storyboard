@@ -99,14 +99,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ty4-Od-OnI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ty4-Od-OnI">
                                 <rect key="frame" x="157" y="188" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="TG4-0C-tfz"/>
                                     <constraint firstAttribute="height" constant="100" id="iaa-Bb-7GP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="😂"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="😂">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="system" size="18"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="imageSelectButtonTapped:" destination="Xhn-4k-cgH" eventType="touchUpInside" id="HWE-QN-JaB"/>
                                     <segue destination="bgb-9h-aOU" kind="popoverPresentation" popoverAnchorView="ty4-Od-OnI" id="psg-2w-fna">
@@ -195,19 +202,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5yD-0a-HmB">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQh-9q-bal">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                </imageView>
+                                                    <state key="normal" title="emojiButton"/>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="5yD-0a-HmB" firstAttribute="leading" secondItem="J9q-46-Hsn" secondAttribute="leading" id="Ure-Vs-fcu"/>
-                                            <constraint firstItem="5yD-0a-HmB" firstAttribute="top" secondItem="J9q-46-Hsn" secondAttribute="top" id="UyW-9l-IQa"/>
-                                            <constraint firstAttribute="bottom" secondItem="5yD-0a-HmB" secondAttribute="bottom" id="phT-Zs-dok"/>
-                                            <constraint firstAttribute="trailing" secondItem="5yD-0a-HmB" secondAttribute="trailing" id="sld-jE-cdy"/>
+                                            <constraint firstAttribute="trailing" secondItem="nQh-9q-bal" secondAttribute="trailing" id="0tg-mm-PYS"/>
+                                            <constraint firstItem="nQh-9q-bal" firstAttribute="top" secondItem="J9q-46-Hsn" secondAttribute="top" id="2Nt-Tt-Pze"/>
+                                            <constraint firstAttribute="bottom" secondItem="nQh-9q-bal" secondAttribute="bottom" id="37s-OL-Gi2"/>
+                                            <constraint firstItem="nQh-9q-bal" firstAttribute="leading" secondItem="J9q-46-Hsn" secondAttribute="leading" id="YYm-hw-gz3"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="emojiImageView" destination="5yD-0a-HmB" id="WP9-2t-Jt9"/>
+                                            <outlet property="emojiButton" destination="nQh-9q-bal" id="fNK-Fn-2ob"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
