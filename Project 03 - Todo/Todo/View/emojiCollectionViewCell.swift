@@ -12,4 +12,5 @@ class emojiCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var emojiButton: UIButton!
     
+    
 }

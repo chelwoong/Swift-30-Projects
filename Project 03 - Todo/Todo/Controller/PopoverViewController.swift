@@ -8,21 +8,50 @@
 
 import UIKit
 
-class popOverViewController: UIViewController {
+class PopoverViewController: UIViewController {
     
+    // MARK: - Variables and Properties
+    var emojiDelegate: PopoverDelegate?
     var emojiList: [[String]] = []
     let sectionTitle: [String] = ["Emoticons", "Dingbats", "Transport and map symbols", "Enclosed Characters"]
     let cellId = "emojiCell"
+    let addTodoVC = "addTodoViewController"
     
-    func fetchEmojis(){
+    
+    // MARK: - Actions
+    @IBAction func emojiTapped(_ sender: Any) {
+        print("emojiTapped")
+        guard let emojiButton = sender as? UIButton else {
+            return
+        }
 
+        if let image = emojiButton.currentImage {
+            print("emojiDelegate: \(emojiDelegate)")
+            emojiDelegate?.setButtonImage(image)
+            print(image)
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+         fetchEmojis()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        preferredContentSize = CGSize(width: self.view.bounds.width, height: 300)
+    }
+    
+    // MARK: - Helper functions
+    func fetchEmojis(){
         let emojiRanges = [
             0x1F601...0x1F64F,
             0x2702...0x27B0,
             0x1F680...0x1F6C0,
             0x1F170...0x1F251
         ]
-        
         
         for range in emojiRanges {
             var array: [String] = []
@@ -36,18 +65,7 @@ class popOverViewController: UIViewController {
         }
         
     }
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-         fetchEmojis()
-    }
     
-    override func viewWillLayoutSubviews() {
-        preferredContentSize = CGSize(width: self.view.bounds.width, height: 200)
-    }
-
     /*
     // MARK: - Navigation
 
@@ -62,7 +80,7 @@ class popOverViewController: UIViewController {
 
 // MARK: - extension popOverViewController
 
-extension popOverViewController: UICollectionViewDataSource {
+extension PopoverViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return emojiList[section].count
     }
@@ -73,16 +91,16 @@ extension popOverViewController: UICollectionViewDataSource {
         
         guard let cell: emojiCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? emojiCollectionViewCell else {return defaultCell}
         
-        
         cell.emojiButton.setImage(emojiList[indexPath.section][indexPath.item].image(), for: .normal)
         
         return cell
     }
 }
 
-extension popOverViewController: UICollectionViewDelegate {
+extension PopoverViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("emoji")
+        print("emoji, \(indexPath.item)")
     }
 }
 
@@ -97,7 +115,6 @@ extension String {
         let stringBounds = (self as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 75)])
         let originX = (size.width - stringBounds.width)/2
         let originY = (size.height - stringBounds.height)/2
-        print(stringBounds)
         let rect = CGRect(origin: CGPoint(x: originX, y: originY), size: size)
         UIRectFill(rect)
         
