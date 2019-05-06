@@ -16,8 +16,10 @@
 		4CBB12B922773ACB0019F5EE /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12B822773ACB0019F5EE /* Todo.swift */; };
 		4CBB12BB227750C30019F5EE /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12BA227750C30019F5EE /* AddTodoViewController.swift */; };
 		4CBB12BD227A9AC00019F5EE /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12BC227A9AC00019F5EE /* PopoverViewController.swift */; };
-		4CBB12BF227AD8400019F5EE /* emojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12BE227AD8400019F5EE /* emojiCollectionViewCell.swift */; };
+		4CBB12BF227AD8400019F5EE /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12BE227AD8400019F5EE /* EmojiCollectionViewCell.swift */; };
 		4CBB12C1227EFA610019F5EE /* PopoverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12C0227EFA610019F5EE /* PopoverDelegate.swift */; };
+		4CBB12C5227FFDCE0019F5EE /* AddTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12C4227FFDCE0019F5EE /* AddTodo.swift */; };
+		4CBB12C722800B120019F5EE /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12C622800B120019F5EE /* TodoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +34,10 @@
 		4CBB12B822773ACB0019F5EE /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		4CBB12BA227750C30019F5EE /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		4CBB12BC227A9AC00019F5EE /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
-		4CBB12BE227AD8400019F5EE /* emojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		4CBB12BE227AD8400019F5EE /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		4CBB12C0227EFA610019F5EE /* PopoverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverDelegate.swift; sourceTree = "<group>"; };
+		4CBB12C4227FFDCE0019F5EE /* AddTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodo.swift; sourceTree = "<group>"; };
+		4CBB12C622800B120019F5EE /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 			children = (
 				4CBB12C0227EFA610019F5EE /* PopoverDelegate.swift */,
 				4CBB12B822773ACB0019F5EE /* Todo.swift */,
+				4CBB12C4227FFDCE0019F5EE /* AddTodo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,7 +106,8 @@
 		4CBB12B722773AB60019F5EE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4CBB12BE227AD8400019F5EE /* emojiCollectionViewCell.swift */,
+				4CBB12BE227AD8400019F5EE /* EmojiCollectionViewCell.swift */,
+				4CBB12C622800B120019F5EE /* TodoTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,8 +184,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBB12A3227739240019F5EE /* TodoViewController.swift in Sources */,
-				4CBB12BF227AD8400019F5EE /* emojiCollectionViewCell.swift in Sources */,
+				4CBB12BF227AD8400019F5EE /* EmojiCollectionViewCell.swift in Sources */,
 				4CBB12BB227750C30019F5EE /* AddTodoViewController.swift in Sources */,
+				4CBB12C722800B120019F5EE /* TodoTableViewCell.swift in Sources */,
+				4CBB12C5227FFDCE0019F5EE /* AddTodo.swift in Sources */,
 				4CBB12A9227739240019F5EE /* Todo.xcdatamodeld in Sources */,
 				4CBB12A1227739240019F5EE /* AppDelegate.swift in Sources */,
 				4CBB12BD227A9AC00019F5EE /* PopoverViewController.swift in Sources */,

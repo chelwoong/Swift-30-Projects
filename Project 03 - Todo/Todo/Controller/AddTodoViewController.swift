@@ -11,8 +11,11 @@ import UIKit
 class AddTodoViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     // MARK: - Variables and Properties
-    
     var popOverVC = "popOverViewController"
+    var todoes: [Todo]?
+    var date: String = ""
+    let todoViewVC = "todoViewController"
+    var addTodoDelegate: AddTodo?
     
     @IBOutlet weak var imageSelectButton: UIButton!
     @IBOutlet weak var todoTextLabel: UILabel!
@@ -20,35 +23,31 @@ class AddTodoViewController: UIViewController, UIPopoverPresentationControllerDe
     @IBOutlet weak var datePicker: UIDatePicker!
     
     
+    // MARK: - Actions
     @IBAction func imageSelectButtonTapped(_ sender: AnyObject) {
         print("button Tapped")
 
     }
+    @IBAction func datePicked(_ sender: Any) {
+        if let datePicker = sender as? UIDatePicker {
+            datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        }
+    }
+    @IBAction func addTodo(_ sender: Any) {
+        let todo = Todo()
+        todo.todoName = todoTextField.text
+        todo.todoDate = date
+        todo.todoIcon = imageSelectButton.currentImage
+        print("todo: \(todo)")
+        addTodoDelegate?.addTodo(todo)
+    }
     
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppear")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewDidApper")
-     
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewWillDisappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("viewDidDisappear")
+        
     }
     
     // MARK: - Navigation
@@ -62,6 +61,8 @@ class AddTodoViewController: UIViewController, UIPopoverPresentationControllerDe
         }
     }
     
+    // MARK: - functions
+    
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         print("popovered")
         // 프로그래밍 방법으로 dismiss를 할 때는 실행되지 않는다.
@@ -70,10 +71,18 @@ class AddTodoViewController: UIViewController, UIPopoverPresentationControllerDe
          It is not called when you dismiss the popover programmatically using the dismissModalViewControllerAnimated: method.
          */
     }
-   
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    @objc
+    func dateChanged() {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .none
+        let date = dateformatter.string(from: datePicker.date)
+        self.date = date
     }
 }
 

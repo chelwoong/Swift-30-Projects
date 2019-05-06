@@ -26,9 +26,7 @@ class PopoverViewController: UIViewController {
         }
 
         if let image = emojiButton.currentImage {
-            print("emojiDelegate: \(emojiDelegate)")
             emojiDelegate?.setButtonImage(image)
-            print(image)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -89,7 +87,7 @@ extension PopoverViewController: UICollectionViewDataSource {
         
         let defaultCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         
-        guard let cell: emojiCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? emojiCollectionViewCell else {return defaultCell}
+        guard let cell: EmojiCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? EmojiCollectionViewCell else {return defaultCell}
         
         cell.emojiButton.setImage(emojiList[indexPath.section][indexPath.item].image(), for: .normal)
         
@@ -99,8 +97,7 @@ extension PopoverViewController: UICollectionViewDataSource {
 
 extension PopoverViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("emoji")
-        print("emoji, \(indexPath.item)")
+
     }
 }
 

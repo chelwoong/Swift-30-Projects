@@ -13,7 +13,7 @@
         <!--Todo List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="todoViewController" id="BYZ-38-t0r" customClass="TodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="todoCell" id="AYx-sd-yLm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="todoCell" id="AYx-sd-yLm" customClass="TodoTableViewCell" customModule="Todo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AYx-sd-yLm" id="EvP-l5-BBp">
@@ -61,6 +61,11 @@
                                                 <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qRe-7i-phY" secondAttribute="trailing" priority="500" constant="309.5" id="z8d-z9-znF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="todoDateLabel" destination="qRe-7i-phY" id="VnZ-7X-kR1"/>
+                                            <outlet property="todoImageView" destination="Lem-Rg-okb" id="auV-BP-v6z"/>
+                                            <outlet property="todoLabel" destination="3lA-lB-HXQ" id="zIx-4x-Ol2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -86,6 +91,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="djN-nL-SUf" id="Zcj-nS-nXw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -140,16 +148,30 @@
                                 <date key="date" timeIntervalSinceReferenceDate="578328923.22165">
                                     <!--2019-04-30 14:55:23 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="datePicked:" destination="Xhn-4k-cgH" eventType="valueChanged" id="p5G-dw-9VC"/>
+                                </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-lM-QwO">
+                                <rect key="frame" x="174" y="634" width="66" height="30"/>
+                                <state key="normal" title="Add Todo"/>
+                                <connections>
+                                    <action selector="addTodo:" destination="Xhn-4k-cgH" eventType="touchUpInside" id="z1r-Jn-5Ck"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gSR-jN-k2I" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O4j-Z1-Gx1" secondAttribute="trailing" constant="50" id="257-ns-J0c"/>
+                            <constraint firstItem="3c3-lM-QwO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gSR-jN-k2I" secondAttribute="leading" constant="50" id="40M-cG-Q2D"/>
+                            <constraint firstItem="gSR-jN-k2I" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3c3-lM-QwO" secondAttribute="trailing" constant="50" id="77j-T8-TdX"/>
                             <constraint firstItem="gSR-jN-k2I" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ty4-Od-OnI" secondAttribute="trailing" constant="184" id="EU8-Dn-gJS"/>
                             <constraint firstItem="ty4-Od-OnI" firstAttribute="centerX" secondItem="G32-8N-JJh" secondAttribute="centerX" id="WTc-Ww-2VC"/>
                             <constraint firstItem="ty4-Od-OnI" firstAttribute="top" secondItem="gSR-jN-k2I" secondAttribute="top" constant="100" id="Wms-Ng-Kxi"/>
                             <constraint firstItem="ty4-Od-OnI" firstAttribute="leading" relation="lessThanOrEqual" secondItem="gSR-jN-k2I" secondAttribute="leading" constant="184" id="bxR-qD-d65"/>
+                            <constraint firstItem="3c3-lM-QwO" firstAttribute="top" secondItem="8by-5T-cjG" secondAttribute="bottom" constant="50" id="h8h-CH-CBr"/>
                             <constraint firstItem="8by-5T-cjG" firstAttribute="centerX" secondItem="G32-8N-JJh" secondAttribute="centerX" id="iFi-FV-LmA"/>
+                            <constraint firstItem="3c3-lM-QwO" firstAttribute="centerX" secondItem="G32-8N-JJh" secondAttribute="centerX" id="lZb-RP-U6k"/>
                             <constraint firstItem="O4j-Z1-Gx1" firstAttribute="top" secondItem="ty4-Od-OnI" secondAttribute="bottom" constant="25" id="nfW-CH-1PE"/>
                             <constraint firstItem="8by-5T-cjG" firstAttribute="top" secondItem="O4j-Z1-Gx1" secondAttribute="bottom" constant="25" id="pdH-Jb-VR8"/>
                             <constraint firstItem="ty4-Od-OnI" firstAttribute="centerX" secondItem="G32-8N-JJh" secondAttribute="centerX" id="sms-Wu-qmf"/>
@@ -160,7 +182,7 @@
                     <connections>
                         <outlet property="datePicker" destination="8by-5T-cjG" id="68P-VO-43Q"/>
                         <outlet property="imageSelectButton" destination="ty4-Od-OnI" id="UqQ-VY-a7l"/>
-                        <outlet property="todoTextField" destination="0c4-7s-NLD" id="CJt-hn-dXl"/>
+                        <outlet property="todoTextField" destination="0c4-7s-NLD" id="ZEp-cu-pmn"/>
                         <outlet property="todoTextLabel" destination="a0D-uN-yeH" id="y0O-3e-3lJ"/>
                     </connections>
                 </viewController>
@@ -186,7 +208,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emojiCell" id="J9q-46-Hsn" customClass="emojiCollectionViewCell" customModule="Todo" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emojiCell" id="J9q-46-Hsn" customClass="EmojiCollectionViewCell" customModule="Todo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

@@ -8,8 +8,8 @@
 
 import ARKit
 
-class Todo: NSObject {
-    var todoDate: Date?
+class Todo {
+    var todoDate: String?
     var todoName: String?
     var todoIcon: UIImage?
 }
