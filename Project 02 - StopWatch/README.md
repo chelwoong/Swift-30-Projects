@@ -1,6 +1,6 @@
 # Stopwatch
 # ScreenShot
-![stopwatch](./StopWatch.gif)
+<img src="./StopWatch.gif" alt="stopwatch" width="250"/>
 
 # 배운내용
 
