@@ -8,7 +8,7 @@
 - [TableView Editing](#tableview-editting)
 
 # Screen Shot
-![todo.gif](todo.gif)
+<img src="Todo.gif" alt="Todo.gif" width="250" />
 
 # Button setImage
 
@@ -18,7 +18,7 @@ button.imageView.image = image 라고 원초적으로 생각했으나..
 
 # Button popover
 
-![popover](/Images/popover.png)
+<img src="Images/popover.png" alt="popover" width="200"/>
 
 이런 popover는 일반적인 segue의 push로는 할 수 없다.  
 
