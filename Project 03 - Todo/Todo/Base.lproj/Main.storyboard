@@ -36,8 +36,8 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lA-lB-HXQ" userLabel="todoLabel">
-                                                    <rect key="frame" x="73.5" y="5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="73.5" y="5" width="52.5" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -84,7 +84,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Todo List" id="Ise-ig-Yth">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="7xJ-53-ZzJ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UQw-Q1-tiT">
                             <connections>
                                 <segue destination="Xhn-4k-cgH" kind="show" id="0dX-2n-gkH"/>

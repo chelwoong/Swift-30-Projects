@@ -20,6 +20,7 @@
 		4CBB12C1227EFA610019F5EE /* PopoverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12C0227EFA610019F5EE /* PopoverDelegate.swift */; };
 		4CBB12C5227FFDCE0019F5EE /* AddTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12C4227FFDCE0019F5EE /* AddTodo.swift */; };
 		4CBB12C722800B120019F5EE /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12C622800B120019F5EE /* TodoTableViewCell.swift */; };
+		4CBB12CA228033610019F5EE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB12C9228033610019F5EE /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4CBB12C0227EFA610019F5EE /* PopoverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverDelegate.swift; sourceTree = "<group>"; };
 		4CBB12C4227FFDCE0019F5EE /* AddTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodo.swift; sourceTree = "<group>"; };
 		4CBB12C622800B120019F5EE /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		4CBB12C9228033610019F5EE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		4CBB129F227739240019F5EE /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				4CBB12C82280334F0019F5EE /* Helpers */,
 				4CBB12B722773AB60019F5EE /* View */,
 				4CBB12B622773AB00019F5EE /* Controller */,
 				4CBB12B522773AAC0019F5EE /* Model */,
@@ -110,6 +113,14 @@
 				4CBB12C622800B120019F5EE /* TodoTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4CBB12C82280334F0019F5EE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4CBB12C9228033610019F5EE /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +203,7 @@
 				4CBB12A1227739240019F5EE /* AppDelegate.swift in Sources */,
 				4CBB12BD227A9AC00019F5EE /* PopoverViewController.swift in Sources */,
 				4CBB12C1227EFA610019F5EE /* PopoverDelegate.swift in Sources */,
+				4CBB12CA228033610019F5EE /* Extensions.swift in Sources */,
 				4CBB12B922773ACB0019F5EE /* Todo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

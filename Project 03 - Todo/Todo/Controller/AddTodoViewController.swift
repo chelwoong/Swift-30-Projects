@@ -28,6 +28,7 @@ class AddTodoViewController: UIViewController, UIPopoverPresentationControllerDe
         print("button Tapped")
 
     }
+    
     @IBAction func datePicked(_ sender: Any) {
         if let datePicker = sender as? UIDatePicker {
             datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
@@ -37,9 +38,11 @@ class AddTodoViewController: UIViewController, UIPopoverPresentationControllerDe
         let todo = Todo()
         todo.todoName = todoTextField.text
         todo.todoDate = date
+        
         todo.todoIcon = imageSelectButton.currentImage
-        print("todo: \(todo)")
         addTodoDelegate?.addTodo(todo)
+        
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -47,7 +50,10 @@ class AddTodoViewController: UIViewController, UIPopoverPresentationControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
+        initDate()
         
+        
+        imageSelectButton.setImage("😀".image(), for: .normal)
     }
     
     // MARK: - Navigation
@@ -82,6 +88,16 @@ class AddTodoViewController: UIViewController, UIPopoverPresentationControllerDe
         dateformatter.dateStyle = .medium
         dateformatter.timeStyle = .none
         let date = dateformatter.string(from: datePicker.date)
+        self.date = date
+        print(self.date)
+    }
+    
+    func initDate() {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .none
+        let date = dateformatter.string(from: datePicker.date)
+        print(date)
         self.date = date
     }
 }

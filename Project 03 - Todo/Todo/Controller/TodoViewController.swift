@@ -17,12 +17,11 @@ class TodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("TodoViewVC viewDidLoad")
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("TodoViewVC viewDidAppear")
         tableView.reloadData()
     }
     
@@ -33,13 +32,15 @@ class TodoViewController: UIViewController {
         
         nextVC.addTodoDelegate = self
     }
+    
 }
 
-// MARK: - extension
+// MARK: - extensions
+
+// MARK: TableView DataSource
 extension TodoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(todoes.count)
         return todoes.count
     }
     
@@ -48,8 +49,6 @@ extension TodoViewController: UITableViewDataSource {
         guard let todoCell: TodoTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifire, for: indexPath) as? TodoTableViewCell else {
             return defaultCell
         }
-        
-        
         todoCell.todoImageView.image = todoes[indexPath.row].todoIcon
         todoCell.todoLabel.text = todoes[indexPath.row].todoName
         todoCell.todoDateLabel.text = todoes[indexPath.row].todoDate
@@ -58,13 +57,35 @@ extension TodoViewController: UITableViewDataSource {
     }
     
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            todoes.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
+    
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        if editing && !tableView.isEditing {
+            tableView.setEditing(true, animated: animated)
+            self.editButtonItem.title = "Done"
+        } else {
+            tableView.setEditing(false, animated: animated)
+            self.editButtonItem.title = "Edit"
+        }
+    }
 }
 
+// MARK: TableView Delegate
 extension TodoViewController: UITableViewDelegate {
     
 }
 
-
+// MARK: TableView AddTodo
 extension TodoViewController: AddTodo {
     func addTodo(_ todo: Todo) {
         todoes.append(todo)
