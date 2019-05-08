@@ -17,28 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MIL-C7-2vS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGC-7a-xXN">
-                                <rect key="frame" x="184" y="632" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="MIL-C7-2vS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="13i-ao-VVi"/>
-                            <constraint firstItem="kGC-7a-xXN" firstAttribute="top" relation="lessThanOrEqual" secondItem="MIL-C7-2vS" secondAttribute="bottom" constant="558" id="5LT-Mh-EUo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kGC-7a-xXN" secondAttribute="trailing" constant="184" id="MQL-wB-ERS"/>
-                            <constraint firstItem="MIL-C7-2vS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RUm-ey-KTY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kGC-7a-xXN" secondAttribute="bottom" constant="200" id="dOe-se-Qgw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MIL-C7-2vS" secondAttribute="trailing" id="f2H-Fn-f2D"/>
-                            <constraint firstItem="kGC-7a-xXN" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="184" id="jqf-Gd-OzV"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
