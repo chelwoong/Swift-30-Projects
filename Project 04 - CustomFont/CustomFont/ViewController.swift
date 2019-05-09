@@ -18,15 +18,12 @@ class ViewController: UIViewController {
         textView.layer.borderWidth = 1.0
         textView.layer.borderColor = UIColor.black.cgColor
         textView.textAlignment = .center
-    
-//        textView.isEditable = true
-        
-        
+
         return textView
     }()
     
     let changeButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Change Font", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
@@ -45,22 +42,8 @@ class ViewController: UIViewController {
         view.addSubview(customTextView)
         view.addSubview(changeButton)
         
-        [
-            customTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            customTextView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-//            customTextView.heightAnchor.constraint(equalToConstant: 50),
-//            customTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
-            
-//            customTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            customTextView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50),
-            customTextView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50),
-            
-            changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            changeButton.heightAnchor.constraint(equalToConstant: 50),
-            changeButton.topAnchor.constraint(equalTo: customTextView.bottomAnchor, constant: 50)
-            
-        ].forEach{ ($0).isActive = true }
+        setCustomTextView(customTextView)
+        setChangeButton(changeButton)
         
         customTextView.delegate = self
         customTextView.isScrollEnabled = false
@@ -69,20 +52,26 @@ class ViewController: UIViewController {
     
     @objc
     func changeButtonTapped(sender: UIButton) {
-        print("Font changed")
-        
         if let font = fonts.randomElement() {
             customTextView.font = UIFont.init(name: font, size: 25)
-            let size = CGSize(width: customTextView.frame.width, height: .infinity)
-            let estimatedSize = customTextView.sizeThatFits(size)
-            
-            customTextView.constraints.forEach { (constraint) in
-                if constraint.firstAttribute == .height {
-                    constraint.constant = estimatedSize.height
-                }
-            }
         }
-        
+    }
+    
+    func setCustomTextView(_ textView: UITextView) {
+        NSLayoutConstraint.activate([
+            textView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            textView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            textView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50),
+            textView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -50),
+            ])
+    }
+    
+    func setChangeButton(_ button: UIButton) {
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.topAnchor.constraint(equalTo: customTextView.bottomAnchor, constant: 50)
+            ])
     }
 
 
