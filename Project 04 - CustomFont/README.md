@@ -3,4 +3,4 @@
 - [TextView Customising](textView-customising)
 
 # ScreenShot
-<img src="Todo.gif" alt="CustomFont.gif" width="250" />
+<img src="CustomFont.gif" alt="CustomFont.gif" width="250" />
