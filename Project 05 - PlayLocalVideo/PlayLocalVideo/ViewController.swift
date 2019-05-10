@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     let videoTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = UIColor.red
+        tableView.backgroundColor = UIColor.white
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         return tableView
