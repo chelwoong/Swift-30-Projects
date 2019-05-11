@@ -30,11 +30,11 @@
 		4CB4C85E228552DB00AC589B /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		4CB4C8612285B33600AC589B /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		4CB4C8652285C97E00AC589B /* VideoLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
-		4CB4C8A62286B7A600AC589B /* v2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v2.mp4; sourceTree = "<group>"; };
-		4CB4C8A72286B7A600AC589B /* v5.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v5.mp4; sourceTree = "<group>"; };
-		4CB4C8A82286B7A600AC589B /* v1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v1.mp4; sourceTree = "<group>"; };
-		4CB4C8A92286B7A700AC589B /* v3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v3.mp4; sourceTree = "<group>"; };
-		4CB4C8AA2286B7A700AC589B /* v4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v4.mp4; sourceTree = "<group>"; };
+		4CB4C8AF2286C52700AC589B /* v2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v2.mp4; sourceTree = "<group>"; };
+		4CB4C8B02286C52700AC589B /* v1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v1.mp4; sourceTree = "<group>"; };
+		4CB4C8B12286C52700AC589B /* v4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v4.mp4; sourceTree = "<group>"; };
+		4CB4C8B22286C52800AC589B /* v5.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v5.mp4; sourceTree = "<group>"; };
+		4CB4C8B52286C86F00AC589B /* v3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v3.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,11 +51,6 @@
 		4CB4C83C22849C1700AC589B = {
 			isa = PBXGroup;
 			children = (
-				4CB4C8A82286B7A600AC589B /* v1.mp4 */,
-				4CB4C8A62286B7A600AC589B /* v2.mp4 */,
-				4CB4C8A92286B7A700AC589B /* v3.mp4 */,
-				4CB4C8AA2286B7A700AC589B /* v4.mp4 */,
-				4CB4C8A72286B7A600AC589B /* v5.mp4 */,
 				4CB4C8A52286B31400AC589B /* Videos */,
 				4CB4C84722849C1700AC589B /* PlayLocalVideo */,
 				4CB4C84622849C1700AC589B /* Products */,
@@ -122,6 +117,11 @@
 		4CB4C8A52286B31400AC589B /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				4CB4C8B02286C52700AC589B /* v1.mp4 */,
+				4CB4C8AF2286C52700AC589B /* v2.mp4 */,
+				4CB4C8B52286C86F00AC589B /* v3.mp4 */,
+				4CB4C8B12286C52700AC589B /* v4.mp4 */,
+				4CB4C8B22286C52800AC589B /* v5.mp4 */,
 			);
 			path = Videos;
 			sourceTree = "<group>";

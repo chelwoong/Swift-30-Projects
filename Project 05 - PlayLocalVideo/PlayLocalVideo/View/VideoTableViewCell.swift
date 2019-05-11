@@ -12,7 +12,6 @@ class VideoTableViewCell: UITableViewCell {
     
     let backgroundImgaeView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.red
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView

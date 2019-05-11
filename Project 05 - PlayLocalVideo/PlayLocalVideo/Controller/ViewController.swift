@@ -13,7 +13,7 @@ import WebKit
 class ViewController: UIViewController {
     
     let videoLauncher = VideoLauncher()
-    let localPath = "/Users/os/woong/iOS/Swift-30-Project/Project 05 - PlayLocalVideo/"
+    let localPath = "/Users/os/woong/iOS/Swift-30-Project/Project 05 - PlayLocalVideo/Videos/"
     let videoTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +57,10 @@ extension ViewController: UITableViewDataSource {
             return defaultcell
         }
         
-//        cell.textLabel?.text = "Hello"
+        if let image = UIImage(named: "v\(indexPath.row+1)") {
+            cell.backgroundImgaeView.image = image
+        }
+        
         
         return cell
     }
@@ -74,6 +77,8 @@ extension ViewController: UITableViewDelegate {
         present(playerViewController, animated: true) {
             player.play()
         }
+        
+        
     }
 }
 
