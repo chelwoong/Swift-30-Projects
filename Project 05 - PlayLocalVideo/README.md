@@ -2,7 +2,7 @@
 - [AVPlayer](#avplayer)
 
 # ScreenShot
-<img src="/PlayLocalVideo.gif" width="30%" />
+<img src="PlayLocalVideo.gif" width="250" />
 
 # AVPlayer
 AVPlayer 는 동영상 재생 플레이어를 제공하는 객체이다.  
