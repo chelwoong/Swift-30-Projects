@@ -8,7 +8,6 @@
 
 import UIKit
 import AVKit
-import WebKit
 
 class ViewController: UIViewController {
     
@@ -70,7 +69,6 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let url = URL(fileURLWithPath: localPath + "v\(indexPath.row+1).mp4")
-        print(url)
         let player = AVPlayer(url: url)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player

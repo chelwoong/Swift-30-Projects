@@ -15,7 +15,6 @@
 		4CB4C85622849C1900AC589B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB4C85422849C1900AC589B /* LaunchScreen.storyboard */; };
 		4CB4C85F228552DB00AC589B /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB4C85E228552DB00AC589B /* VideoTableViewCell.swift */; };
 		4CB4C8622285B33600AC589B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB4C8612285B33600AC589B /* Video.swift */; };
-		4CB4C8662285C97E00AC589B /* VideoLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB4C8652285C97E00AC589B /* VideoLauncher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		4CB4C85722849C1900AC589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CB4C85E228552DB00AC589B /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		4CB4C8612285B33600AC589B /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
-		4CB4C8652285C97E00AC589B /* VideoLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLauncher.swift; sourceTree = "<group>"; };
 		4CB4C8AF2286C52700AC589B /* v2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v2.mp4; sourceTree = "<group>"; };
 		4CB4C8B02286C52700AC589B /* v1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v1.mp4; sourceTree = "<group>"; };
 		4CB4C8B12286C52700AC589B /* v4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = v4.mp4; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 		4CB4C84722849C1700AC589B /* PlayLocalVideo */ = {
 			isa = PBXGroup;
 			children = (
-				4CB4C8642285C97200AC589B /* Helper */,
 				4CB4C8632285C96700AC589B /* Controller */,
 				4CB4C8602285B31200AC589B /* Model */,
 				4CB4C85D228552AB00AC589B /* View */,
@@ -104,14 +101,6 @@
 				4CB4C84A22849C1700AC589B /* ViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		4CB4C8642285C97200AC589B /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				4CB4C8652285C97E00AC589B /* VideoLauncher.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		4CB4C8A52286B31400AC589B /* Videos */ = {
@@ -198,7 +187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CB4C84B22849C1700AC589B /* ViewController.swift in Sources */,
-				4CB4C8662285C97E00AC589B /* VideoLauncher.swift in Sources */,
 				4CB4C85F228552DB00AC589B /* VideoTableViewCell.swift in Sources */,
 				4CB4C85122849C1700AC589B /* PlayLocalVideo.xcdatamodeld in Sources */,
 				4CB4C84922849C1700AC589B /* AppDelegate.swift in Sources */,
