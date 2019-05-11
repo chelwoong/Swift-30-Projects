@@ -11,7 +11,6 @@ import AVKit
 
 class ViewController: UIViewController {
     
-    let videoLauncher = VideoLauncher()
     let localPath = "/Users/os/woong/iOS/Swift-30-Project/Project 05 - PlayLocalVideo/Videos/"
     let videoTableView: UITableView = {
         let tableView = UITableView()
