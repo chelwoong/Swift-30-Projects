@@ -13,7 +13,6 @@ class CarouselViewController: UIViewController {
     var cellId = "cellId"
     var cardTexts = ["Woongs", "iOS", "Success", "3S", ":D"]
     let carouselCollectionView: UICollectionView = {
-        
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumLineSpacing = 20
@@ -25,16 +24,11 @@ class CarouselViewController: UIViewController {
         return collectionView
     }()
     
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupGradient(view)
         setupCarouselCollectionView()
-
-        
     }
 
     func setupCarouselCollectionView() {
@@ -43,9 +37,7 @@ class CarouselViewController: UIViewController {
         carouselCollectionView.delegate = self
         
         NSLayoutConstraint.activate([
-//            carouselCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             carouselCollectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
             carouselCollectionView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.2/1.0, constant: -40),
             
             carouselCollectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 0),
@@ -94,8 +86,6 @@ extension CarouselViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 extension CarouselViewController: UICollectionViewDelegate {

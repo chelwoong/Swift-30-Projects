@@ -16,15 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let path = Bundle.main.path(forResource: "v1", ofType: "mp4")
-        print(path)
 
-//        let audioFileName = "v1"
-//        
-//        if let audioFilePath = Bundle.main.path(forResource: audioFileName, ofType: "mp3", inDirectory: "audioFiles") {
-//            print(audioFilePath)
-//        }
-//        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = UINavigationController(rootViewController: ViewController())
