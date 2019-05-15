@@ -20,5 +20,5 @@
 ### [Project 05 - PlayLocalVideo](Project%2002%20-%20PlayLocalVideo)
 <img src="Project%2005%20-%20PlayLocalVideo/PlayLocalVideo.gif" width="250" />
 
-### [Project 03 - Todo](Project%2002%20-%20CarouselEffect)
+### [Project 06 - CarouselEffect](Project%2002%20-%20CarouselEffect)
 <img src="Project%2006%20-%20CarouselEffect/CarouselEffect.gif" width="250" />
