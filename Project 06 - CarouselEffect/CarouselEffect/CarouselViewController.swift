@@ -51,7 +51,7 @@ class CarouselViewController: UIViewController {
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = 5
-        view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
+//        view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
     }
     
     func setupGradient(_ view: UIView) {
