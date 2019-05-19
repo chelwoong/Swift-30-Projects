@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+class LocationStorage {
+    static let shared: LocationStorage
+    
+    private let fileManager: FileManager
+    private let documentsURL: URL
+    let locations: [Location]
+    
+    init() {
+        fileManager = FileManager.default
+        documentsURL = try! FileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        locations = []
+        
+    }
+    
+    
+}
