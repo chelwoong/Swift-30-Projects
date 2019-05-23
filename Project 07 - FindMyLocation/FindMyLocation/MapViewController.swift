@@ -14,6 +14,7 @@ class MapViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     let regionInMeters: Double = 1000
+    var previousLocation: CLLocation?
     
     let mapView: MKMapView = {
         let map = MKMapView()
@@ -66,6 +67,7 @@ class MapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
+        mapView.delegate = self
     }
     
     func centerViewOnUserLocation() {
@@ -91,9 +93,7 @@ class MapViewController: UIViewController {
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-            mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            centerViewOnUserLocation()
+            startTrackingUserLocation()
             break
         case .denied:
             // Show alert instructing them how to turn on permissionss
@@ -106,6 +106,20 @@ class MapViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    func startTrackingUserLocation() {
+        mapView.showsUserLocation = true
+        centerViewOnUserLocation()
+        locationManager.startUpdatingLocation()
+        previousLocation = getCenterLocation(for: mapView)
+    }
+    
+    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        return CLLocation(latitude: latitude, longitude: longitude)
+        
     }
 
 }
@@ -126,6 +140,43 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location error: \(error)")
     }
+}
 
-
+extension MapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let center = getCenterLocation(for: mapView)
+        let geoCoder = CLGeocoder()
+        
+        geoCoder.reverseGeocodeLocation(center) { [weak self] (placeMarks, error) in
+            guard let self = self else { return }
+            
+            guard let previousLocation = self.previousLocation else { return }
+            guard center.distance(from: previousLocation) > 50 else { return }
+            self.previousLocation = center
+            
+            if let _ = error {
+                // TODO: Show alert informingthe user
+                return
+            }
+            
+            guard let placeMark = placeMarks?.first else {
+                // TODO: Show alert informingthe user
+                return
+            }
+            
+            let streetNumber = placeMark.subThoroughfare ?? "" // 번지
+            let streetName = placeMark.thoroughfare ?? "" // 도로명
+            let countryName = placeMark.country ?? "" // 나라
+            let localName = placeMark.locality ?? "" // 구
+            let subLocalName = placeMark.subLocality ?? ""
+            let name = placeMark.name ?? "" // 도로명 + 번지
+            
+            DispatchQueue.main.async {
+                let location = "\(countryName) \(localName) \(streetName) \(streetNumber) "
+                self.locationLabel.text = location
+            }
+        }
+        
+    }
 }
