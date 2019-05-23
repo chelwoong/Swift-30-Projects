@@ -9,7 +9,7 @@
 import Foundation
 
 class LocationStorage {
-    static let shared: LocationStorage
+    static let shared = LocationStorage()
     
     private let fileManager: FileManager
     private let documentsURL: URL
@@ -17,9 +17,9 @@ class LocationStorage {
     
     init() {
         fileManager = FileManager.default
-        documentsURL = try! FileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        documentsURL = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         locations = []
-        
+
     }
     
     

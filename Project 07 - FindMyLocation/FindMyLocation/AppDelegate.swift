@@ -26,9 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = UINavigationController(rootViewController: TabBarController())
         
-        locatonManager.requestAlwaysAuthorization()
-        locatonManager.startMonitoringVisits()
-        locatonManager.delegate = self
+//        locatonManager.requestAlwaysAuthorization()
+//        locatonManager.startMonitoringVisits()
+//        locatonManager.delegate = self
         
         return true
     }
@@ -104,15 +104,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-        
-        let clLocation = CLLocation(latitude: visit.coordinate.latitude, longitude: visit.coordinate.longitude)
-        
-        // Get location description
-    }
-    
-    func newVisitReceived(_ visit: CLVisit, description: String) {
-        let location = Location(visi)
-    }
-}
+//extension AppDelegate: CLLocationManagerDelegate {
+//    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+//
+//        let clLocation = CLLocation(latitude: visit.coordinate.latitude, longitude: visit.coordinate.longitude)
+//
+//        // Get location description
+//    }
+//
+//    func newVisitReceived(_ visit: CLVisit, description: String) {
+////        let location = Location(from: visit as! Decoder)
+//    }
+//}

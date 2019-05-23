@@ -23,5 +23,6 @@ class Location: Codable {
     let date: Date
     let dateString: String
     let description: String
+    
 
 }
