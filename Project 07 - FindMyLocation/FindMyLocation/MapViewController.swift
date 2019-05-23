@@ -36,6 +36,14 @@ class MapViewController: UIViewController {
         return label
     }()
     
+    let pinImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "mapPin")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +51,7 @@ class MapViewController: UIViewController {
         
         view.addSubview(mapView)
         mapView.addSubview(locationLabel)
+        mapView.addSubview(pinImageView)
         
         checkLocationServices()
         
@@ -58,6 +67,9 @@ class MapViewController: UIViewController {
             locationLabel.rightAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.rightAnchor, constant: 0),
             locationLabel.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             locationLabel.heightAnchor.constraint(equalToConstant: 50),
+            
+            pinImageView.centerXAnchor.constraint(equalTo: mapView.centerXAnchor),
+            pinImageView.centerYAnchor.constraint(equalTo: mapView.centerYAnchor, constant: -20),
             ])
     }
     
