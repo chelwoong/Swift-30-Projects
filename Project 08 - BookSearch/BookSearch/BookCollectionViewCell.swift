@@ -41,7 +41,6 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.backgroundColor = UIColor.red
         self.addSubview(bookImageView)
         bookImageView.contentMode = .scaleAspectFit
         bookImageView.clipsToBounds = false
@@ -49,7 +48,7 @@ class BookCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor.white
         self.addSubview(bookAuthorLabel)
         self.addSubview(bookDateLabel)
-//
+
         setLayout()
         
     }

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     let bookCellId = "bookCellId"
     var books: [Book] = [
         Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
+        Book(bookTitle: "함께자라기", author: "김창준", date: "2018.11.30", bookImageName: "함께자라기"),
         Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
         Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
         Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: CGRect.init(), collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.yellow
+        collectionView.backgroundColor = UIColor.green
         
         return collectionView
     }()
@@ -92,6 +92,17 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width / 2 - 15, height: view.frame.height / 3)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 30
+//    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
 }
 
 extension ViewController: UISearchResultsUpdating {
