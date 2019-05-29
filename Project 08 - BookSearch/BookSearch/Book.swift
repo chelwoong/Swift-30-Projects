@@ -11,12 +11,12 @@ import UIKit
 class Book {
     
     var bookImage: UIImage?
-    var bookTitle: String
+    var title: String
     var author: String
     var date: String
     
     init(bookTitle title: String, author: String, date: String, bookImageName: String?) {
-        self.bookTitle = title
+        self.title = title
         self.author = author
         self.date = date
         if let imageName = bookImageName, let image = UIImage(named: imageName) {

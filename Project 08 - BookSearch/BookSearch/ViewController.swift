@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: - Variables and Properties
+    
     let bookCellId = "bookCellId"
     var books: [Book] = [
         Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
@@ -21,6 +23,8 @@ class ViewController: UIViewController {
         Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
         Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
     ]
+    
+    var filteredBooks: [Book] = []
     
     let bookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -53,6 +57,26 @@ class ViewController: UIViewController {
         definesPresentationContext = true
     }
     
+    // MARK: - Helper funcs
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? false
+    }
+    
+    func filterContentForSearch(_ searchText: String, scope: String = "All" ) {
+        filteredBooks = books.filter({ ( book : Book ) -> Bool in
+            return book.title.lowercased().contains(searchText.lowercased())
+        })
+        
+        bookCollectionView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    
+    
     func setlayout() {
         NSLayoutConstraint.activate([
             bookCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
@@ -62,10 +86,17 @@ class ViewController: UIViewController {
             
             ])
     }
+    
+    
 }
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if isFiltering() {
+            return filteredBooks.count
+        }
+        
         return books.count
     }
     
@@ -77,11 +108,17 @@ extension ViewController: UICollectionViewDataSource {
             return defaultCell
         }
         
-        bookCell.bookImageView.image = books[indexPath.item].bookImage
-//        bookCell.backgroundColor = UIColor.blue
-        bookCell.bookNameLabel.text = books[indexPath.item].bookTitle
-        bookCell.bookAuthorLabel.text = books[indexPath.item].author
-        bookCell.bookDateLabel.text = books[indexPath.item].date
+        let book: Book
+        if isFiltering() {
+            book = filteredBooks[indexPath.item]
+        } else {
+            book = books[indexPath.item]
+        }
+        
+        bookCell.bookImageView.image = book.bookImage
+        bookCell.bookNameLabel.text = book.title
+        bookCell.bookAuthorLabel.text = book.author
+        bookCell.bookDateLabel.text = book.date
         
         return bookCell
     }
@@ -107,9 +144,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
-    
+
     func updateSearchResults(for searchController: UISearchController) {
-        // TODO
+        filterContentForSearch(searchController.searchBar.text ?? "")
     }
 }
 
