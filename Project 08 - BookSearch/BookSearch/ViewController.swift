@@ -16,9 +16,10 @@ class ViewController: UIViewController {
     var books: [Book] = [
         Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕", category: "Best"),
         Book(bookTitle: "함께자라기", author: "김창준", date: "2018.11.30", bookImageName: "함께자라기", category: "New"),
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕", category: "Best"),
-        Book(bookTitle: "함께자라기", author: "김창준", date: "2018.11.30", bookImageName: "함께자라기", category: "New"),Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕", category: "Best"),
-        Book(bookTitle: "함께자라기", author: "김창준", date: "2018.11.30", bookImageName: "함께자라기", category: "New"),
+        Book(bookTitle: "부의 추월차선", author: "엠제이 드마코", date: "2013.08.26", bookImageName: "부의 추월차선", category: "Best"),
+        Book(bookTitle: "개인주의자선언", author: "문유석", date: "2015.11.03", bookImageName: "개인주의자선언", category: "Best"),
+        Book(bookTitle: "오늘부터 말공부를 시작합시다", author: "김선에스더", date: "2019.05.21", bookImageName: "오늘부터 말공부를 시작합시다", category: "New"),
+        Book(bookTitle: "빨강 머리 앤", author: "루시 모드 몽고메리", date: "2019.05.10", bookImageName: "빨강 머리 앤", category: "New"),
         
     ]
     
@@ -53,6 +54,7 @@ class ViewController: UIViewController {
         
         
         view.addSubview(bookCollectionView)
+        bookCollectionView.backgroundColor = UIColor.white
         setlayout()
         
         bookCollectionView.register(BookCollectionViewCell.self, forCellWithReuseIdentifier: bookCellId)
@@ -129,11 +131,13 @@ extension ViewController: UICollectionViewDataSource {
         }
         
         bookCell.bookImageView.image = book.bookImage
-        bookCell.bookNameLabel.text = book.title
+        bookCell.bookTitleLabel.text = book.title
         bookCell.bookAuthorLabel.text = book.author
         bookCell.bookDateLabel.text = book.date
-        bookCell.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        bookCell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
+        bookCell.layer.cornerRadius = 5
+        bookCell.layer.borderWidth = 1
         return bookCell
     }
     
