@@ -14,14 +14,12 @@ class ViewController: UIViewController {
     
     let bookCellId = "bookCellId"
     var books: [Book] = [
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
-        Book(bookTitle: "함께자라기", author: "김창준", date: "2018.11.30", bookImageName: "함께자라기"),
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
-        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕"),
+        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕", category: "Best"),
+        Book(bookTitle: "함께자라기", author: "김창준", date: "2018.11.30", bookImageName: "함께자라기", category: "New"),
+        Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕", category: "Best"),
+        Book(bookTitle: "함께자라기", author: "김창준", date: "2018.11.30", bookImageName: "함께자라기", category: "New"),Book(bookTitle: "지대넓얕", author: "채사장", date: "2017.01.17", bookImageName: "지대넓얕", category: "Best"),
+        Book(bookTitle: "함께자라기", author: "김창준", date: "2018.11.30", bookImageName: "함께자라기", category: "New"),
+        
     ]
     
     var filteredBooks: [Book] = []
@@ -30,7 +28,7 @@ class ViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: CGRect.init(), collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.green
+//        collectionView.backgroundColor = UIColor.green
         
         return collectionView
     }()
@@ -42,6 +40,18 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.white
         navigationItem.title = "Book Search"
         
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Books"
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        searchController.searchBar.scopeButtonTitles = ["All", "Best", "New"]
+        searchController.searchBar.delegate = self
+        
+        
         view.addSubview(bookCollectionView)
         setlayout()
         
@@ -49,12 +59,6 @@ class ViewController: UIViewController {
         bookCollectionView.delegate = self
         bookCollectionView.dataSource = self
         
-        // Setup the Search Controller
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Books"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
     }
     
     // MARK: - Helper funcs
@@ -64,15 +68,24 @@ class ViewController: UIViewController {
     }
     
     func filterContentForSearch(_ searchText: String, scope: String = "All" ) {
-        filteredBooks = books.filter({ ( book : Book ) -> Bool in
-            return book.title.lowercased().contains(searchText.lowercased())
+        filteredBooks = books.filter({ (book: Book) -> Bool in
+            let doesCategoryMatch = (scope == "All") || (book.category == scope)
+            print(doesCategoryMatch)
+            if searchBarIsEmpty() {
+                return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && book.title.lowercased().contains(searchText.lowercased())
+            }
+            
         })
         
         bookCollectionView.reloadData()
     }
     
     func isFiltering() -> Bool {
-        return searchController.isActive && !searchBarIsEmpty()
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        
+        return searchController.isActive && (searchBarScopeIsFiltering || searchController.isActive && !searchBarIsEmpty())
     }
     
     
@@ -119,6 +132,7 @@ extension ViewController: UICollectionViewDataSource {
         bookCell.bookNameLabel.text = book.title
         bookCell.bookAuthorLabel.text = book.author
         bookCell.bookDateLabel.text = book.date
+        bookCell.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         
         return bookCell
     }
@@ -143,10 +157,25 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension ViewController: UISearchResultsUpdating {
+    
     // MARK: - UISearchResultsUpdating Delegate
 
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearch(searchController.searchBar.text ?? "")
+        let searchBar = searchController.searchBar
+        let scope: String
+        if let scopeTitle = searchBar.scopeButtonTitles?[searchBar.selectedScopeButtonIndex] {
+            scope = scopeTitle
+            
+            filterContentForSearch(searchController.searchBar.text ?? "", scope: scope)
+        }
+        
+        
     }
 }
 
+extension ViewController: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearch(searchBar.text ?? "", scope: searchBar.scopeButtonTitles?[selectedScope] ?? "All")
+    }
+}
