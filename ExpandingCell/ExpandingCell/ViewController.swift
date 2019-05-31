@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  BookSearch
+//  ExpandingCell
 //
-//  Created by woong on 24/05/2019.
+//  Created by woong on 30/05/2019.
 //  Copyright © 2019 woong. All rights reserved.
 //
 

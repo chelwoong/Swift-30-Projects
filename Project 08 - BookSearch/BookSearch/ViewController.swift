@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Search Books"
         searchController.searchBar.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         navigationItem.searchController = searchController
@@ -72,7 +72,6 @@ class ViewController: UIViewController {
     func filterContentForSearch(_ searchText: String, scope: String = "All" ) {
         filteredBooks = books.filter({ (book: Book) -> Bool in
             let doesCategoryMatch = (scope == "All") || (book.category == scope)
-            print(doesCategoryMatch)
             if searchBarIsEmpty() {
                 return doesCategoryMatch
             } else {
@@ -183,3 +182,4 @@ extension ViewController: UISearchBarDelegate {
         filterContentForSearch(searchBar.text ?? "", scope: searchBar.scopeButtonTitles?[selectedScope] ?? "All")
     }
 }
+
