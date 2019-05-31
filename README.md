@@ -17,8 +17,14 @@
 ### [Project 04 - CustomFont](Project%2004%20-%20CustomFont)
 <img src="Project%2004%20-%20CustomFont/CustomFont.gif" width="250" />
 
-### [Project 05 - PlayLocalVideo](Project%2002%20-%20PlayLocalVideo)
+### [Project 05 - PlayLocalVideo](Project%2005%20-%20PlayLocalVideo)
 <img src="Project%2005%20-%20PlayLocalVideo/PlayLocalVideo.gif" width="250" />
 
-### [Project 06 - CarouselEffect](Project%2002%20-%20CarouselEffect)
+### [Project 06 - CarouselEffect](Project%2006%20-%20CarouselEffect)
 <img src="Project%2006%20-%20CarouselEffect/CarouselEffect.gif" width="250" />
+
+### [Project 07 -  FindingAWay](Project%2007%20-%FindingAWay)
+<img src="Project%2007%20-%20FindingAWay/FindingAWay.gif" width="250" />
+
+### [Project 08 - BookSearch](Project%2008%20-%BookSearch)
+<img src="Project%2008%20-%20BookSearch/BookSearch.gif" width="250" />
