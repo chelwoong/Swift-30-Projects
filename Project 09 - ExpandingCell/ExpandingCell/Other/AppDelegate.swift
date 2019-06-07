@@ -20,7 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+        
+        window?.rootViewController = UINavigationController(rootViewController: ExpandingViewController(collectionViewLayout: layout))
+                
         return true
     }
 
