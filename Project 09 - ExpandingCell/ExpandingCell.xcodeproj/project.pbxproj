@@ -13,6 +13,8 @@
 		4C1286C7229FD780002AA06D /* ExpandingCell.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1286C5229FD780002AA06D /* ExpandingCell.xcdatamodeld */; };
 		4C1286C9229FD781002AA06D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C1286C8229FD781002AA06D /* Assets.xcassets */; };
 		4C1286CC229FD781002AA06D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1286CA229FD781002AA06D /* LaunchScreen.storyboard */; };
+		4C27439722AA84B2008098AE /* InspirationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27439622AA84B2008098AE /* InspirationCell.swift */; };
+		4C27439A22AD16E6008098AE /* ExpandingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C27439922AD16E6008098AE /* ExpandingLayout.swift */; };
 		4C32CB2022AA404B00F6D044 /* Inspirations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C32CB1F22AA404B00F6D044 /* Inspirations.plist */; };
 		4C32CB2222AA40F900F6D044 /* Inspiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32CB2122AA40F900F6D044 /* Inspiration.swift */; };
 		4C32CB2422AA422600F6D044 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32CB2322AA422600F6D044 /* Session.swift */; };
@@ -29,6 +31,8 @@
 		4C1286C8229FD781002AA06D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C1286CB229FD781002AA06D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C1286CD229FD781002AA06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C27439622AA84B2008098AE /* InspirationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationCell.swift; sourceTree = "<group>"; };
+		4C27439922AD16E6008098AE /* ExpandingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingLayout.swift; sourceTree = "<group>"; };
 		4C32CB1F22AA404B00F6D044 /* Inspirations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Inspirations.plist; sourceTree = "<group>"; };
 		4C32CB2122AA40F900F6D044 /* Inspiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspiration.swift; sourceTree = "<group>"; };
 		4C32CB2322AA422600F6D044 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 		4C1286BD229FD780002AA06D /* ExpandingCell */ = {
 			isa = PBXGroup;
 			children = (
+				4C27439822AD16A8008098AE /* Layouts */,
 				4C32CB2522AA4D4500F6D044 /* Extensions */,
 				4C32CB1E22A961E900F6D044 /* Stroyboards */,
 				4C32CB1D22A961CC00F6D044 /* Other */,
@@ -77,6 +82,14 @@
 				4C1286C5229FD780002AA06D /* ExpandingCell.xcdatamodeld */,
 			);
 			path = ExpandingCell;
+			sourceTree = "<group>";
+		};
+		4C27439822AD16A8008098AE /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				4C27439922AD16E6008098AE /* ExpandingLayout.swift */,
+			);
+			path = Layouts;
 			sourceTree = "<group>";
 		};
 		4C32CB1522A95AA900F6D044 /* Models */ = {
@@ -91,6 +104,7 @@
 		4C32CB1622A95AAF00F6D044 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C27439622AA84B2008098AE /* InspirationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,12 +224,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C27439722AA84B2008098AE /* InspirationCell.swift in Sources */,
 				4C32CB2922AA4D5700F6D044 /* UIColor+Palette.swift in Sources */,
 				4C32CB2422AA422600F6D044 /* Session.swift in Sources */,
 				4C32CB2822AA4D5700F6D044 /* UIImage+Decompression.swift in Sources */,
 				4C32CB2222AA40F900F6D044 /* Inspiration.swift in Sources */,
 				4C1286C1229FD780002AA06D /* ExpandingCollectionViewController.swift in Sources */,
 				4C1286C7229FD780002AA06D /* ExpandingCell.xcdatamodeld in Sources */,
+				4C27439A22AD16E6008098AE /* ExpandingLayout.swift in Sources */,
 				4C1286BF229FD780002AA06D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,10 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+        let layout = ExpandingLayout()
         
-        window?.rootViewController = UINavigationController(rootViewController: ExpandingViewController(collectionViewLayout: layout))
+//        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+//        layout.minimumLineSpacing = 0
+        let expandingViewController = ExpandingViewController(collectionViewLayout: layout)
+//        expandingViewController.view.frame = self.window!.bounds
+        window?.rootViewController = UINavigationController(rootViewController: expandingViewController)
                 
         return true
     }

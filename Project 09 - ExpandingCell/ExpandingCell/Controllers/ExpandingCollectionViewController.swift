@@ -25,13 +25,14 @@ class ExpandingViewController: UICollectionViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+         
         collectionView.backgroundColor = UIColor.clear
         
         if let patternImage = UIImage(named: "Pattern") {
             view.backgroundColor = UIColor(patternImage: patternImage)
         }
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-
+        collectionView.register(InspirationCell.self, forCellWithReuseIdentifier: cellId)
+    
     }
 }
 
@@ -47,4 +48,23 @@ extension ExpandingViewController {
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    
+    
 }
