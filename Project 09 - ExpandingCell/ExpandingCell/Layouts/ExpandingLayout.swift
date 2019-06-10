@@ -18,6 +18,7 @@ struct ExpandingLayoutConstatns {
 // MARK: Properties and Variables
 
 class ExpandingLayout: UICollectionViewLayout {
+    
     // The amount the user needs to scroll before the featured cell changes
     let dragOffset: CGFloat = 180.0
     
@@ -55,7 +56,6 @@ class ExpandingLayout: UICollectionViewLayout {
 extension ExpandingLayout {
     override var collectionViewContentSize: CGSize {
         let contentHeight = (CGFloat(numberOfItems) * dragOffset) + (height - dragOffset)
-        print("contentHeight: \(contentHeight)")
         return CGSize(width: width, height: contentHeight)
     }
     
@@ -93,11 +93,10 @@ extension ExpandingLayout {
             frame = CGRect(x: 0, y: y, width: width, height: height)
             attributes.frame = frame
             cache.append(attributes)
-            print(cache)
             y = frame.maxY
-            
-            
         }
+        
+        
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -112,5 +111,11 @@ extension ExpandingLayout {
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
+    }
+    
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        let itemIndex = round(proposedContentOffset.y / dragOffset)
+        let yOffset = itemIndex * dragOffset
+        return CGPoint(x: 0, y: yOffset)
     }
 }

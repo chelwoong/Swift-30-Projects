@@ -23,11 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let layout = ExpandingLayout()
         
-//        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
-//        layout.minimumLineSpacing = 0
         let expandingViewController = ExpandingViewController(collectionViewLayout: layout)
-//        expandingViewController.view.frame = self.window!.bounds
-        window?.rootViewController = UINavigationController(rootViewController: expandingViewController)
+        window?.rootViewController = expandingViewController
                 
         return true
     }
