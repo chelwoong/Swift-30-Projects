@@ -70,6 +70,7 @@
 		4C1286BD229FD780002AA06D /* ExpandingCell */ = {
 			isa = PBXGroup;
 			children = (
+				4C27439B22AE3822008098AE /* Helpers */,
 				4C27439822AD16A8008098AE /* Layouts */,
 				4C32CB2522AA4D4500F6D044 /* Extensions */,
 				4C32CB1E22A961E900F6D044 /* Stroyboards */,
@@ -90,6 +91,13 @@
 				4C27439922AD16E6008098AE /* ExpandingLayout.swift */,
 			);
 			path = Layouts;
+			sourceTree = "<group>";
+		};
+		4C27439B22AE3822008098AE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		4C32CB1522A95AA900F6D044 /* Models */ = {

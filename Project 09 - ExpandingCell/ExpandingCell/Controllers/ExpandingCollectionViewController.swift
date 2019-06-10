@@ -34,6 +34,7 @@ class ExpandingViewController: UICollectionViewController {
         collectionView.register(InspirationCell.self, forCellWithReuseIdentifier: cellId)
     
     }
+    
 }
 
 extension ExpandingViewController {
