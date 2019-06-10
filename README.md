@@ -28,3 +28,6 @@
 
 ### [Project 08 - BookSearch](Project%2008%20-%BookSearch)
 <img src="Project%2008%20-%20BookSearch/BookSearch.gif" width="250" />
+
+### [Project 09 - ExpandingCell](Project%2009%20-%ExpandingCell)
+<img src="Project%2009%20-%20ExpandingCell/ExpandingCell.gif" width="250" />
