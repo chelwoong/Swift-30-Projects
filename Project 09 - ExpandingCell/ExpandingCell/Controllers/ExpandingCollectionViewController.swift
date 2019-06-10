@@ -42,9 +42,11 @@ extension ExpandingViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        guard let cell: InspirationCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? InspirationCell else { fatalError() }
         
-        cell.contentView.backgroundColor = colors[indexPath.item]
+//        cell.contentView.backgroundColor = colors[indexPath.item]
+        
+        cell.inspiration = inspirations[indexPath.item]
         
         return cell
     }

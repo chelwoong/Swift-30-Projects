@@ -55,6 +55,7 @@ class ExpandingLayout: UICollectionViewLayout {
 extension ExpandingLayout {
     override var collectionViewContentSize: CGSize {
         let contentHeight = (CGFloat(numberOfItems) * dragOffset) + (height - dragOffset)
+        print("contentHeight: \(contentHeight)")
         return CGSize(width: width, height: contentHeight)
     }
     
