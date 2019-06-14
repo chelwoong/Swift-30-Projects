@@ -11,17 +11,10 @@ import UIKit
 class CalendarViewController: UIViewController {
     
     var cellId = "cellId"
-    enum DayOfWeek {
-        case monday
-        case thuesday
-        case wednesday
-        case thursday
-        case friday
-        case saturday
-        case sunday
-    }
     
-    var dayCounts = [31, 28, 31 ]
+    var currentMonthIndex = 0
+    var currentYear = 0
+    var todaysDate = 0
     
     let calendarCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,14 +25,26 @@ class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor.white
+
+        let weekdaysView = WeekdaysView()
+        view.addSubview(weekdaysView)
+
+        weekdaysView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, size: CGSize(width: 0, height: 50))
+
         view.addSubview(calendarCollectionView)
-        
-        calendarCollectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        calendarCollectionView.anchor(top: weekdaysView.bottomAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         calendarCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
         
+        
+        
+        currentMonthIndex = Calendar.current.component(.month, from: Date())
+        currentYear = Calendar.current.component(.year, from: Date())
+        todaysDate = Calendar.current.component(.day, from: Date())
+        
+        print(currentMonthIndex, currentYear, todaysDate)
     }
 
 
