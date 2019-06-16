@@ -17,6 +17,8 @@
 		4CBFB9D722B2754C000ED4D5 /* CalendarEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFB9D622B2754C000ED4D5 /* CalendarEnums.swift */; };
 		4CBFB9D922B275B0000ED4D5 /* CalendarStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFB9D822B275B0000ED4D5 /* CalendarStruct.swift */; };
 		4CBFB9DD22B3841F000ED4D5 /* WeekdaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFB9DC22B3841F000ED4D5 /* WeekdaysView.swift */; };
+		4CBFB9DF22B3A5B2000ED4D5 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFB9DE22B3A5B2000ED4D5 /* CalendarView.swift */; };
+		4CBFB9E122B62A42000ED4D5 /* DateCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBFB9E022B62A42000ED4D5 /* DateCVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		4CBFB9D622B2754C000ED4D5 /* CalendarEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEnums.swift; sourceTree = "<group>"; };
 		4CBFB9D822B275B0000ED4D5 /* CalendarStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStruct.swift; sourceTree = "<group>"; };
 		4CBFB9DC22B3841F000ED4D5 /* WeekdaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaysView.swift; sourceTree = "<group>"; };
+		4CBFB9DE22B3A5B2000ED4D5 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		4CBFB9E022B62A42000ED4D5 /* DateCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				4CBFB9DC22B3841F000ED4D5 /* WeekdaysView.swift */,
+				4CBFB9DE22B3A5B2000ED4D5 /* CalendarView.swift */,
+				4CBFB9E022B62A42000ED4D5 /* DateCVCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,10 +182,12 @@
 			files = (
 				4CBFB9D922B275B0000ED4D5 /* CalendarStruct.swift in Sources */,
 				4CBFB9DD22B3841F000ED4D5 /* WeekdaysView.swift in Sources */,
+				4CBFB9DF22B3A5B2000ED4D5 /* CalendarView.swift in Sources */,
 				4CBFB9C122B25A5C000ED4D5 /* CalendarViewController.swift in Sources */,
 				4CBFB9C722B25A5C000ED4D5 /* Calendar.xcdatamodeld in Sources */,
 				4CBFB9BF22B25A5C000ED4D5 /* AppDelegate.swift in Sources */,
 				4CBFB9D522B25EB7000ED4D5 /* Helper.swift in Sources */,
+				4CBFB9E122B62A42000ED4D5 /* DateCVCell.swift in Sources */,
 				4CBFB9D722B2754C000ED4D5 /* CalendarEnums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
