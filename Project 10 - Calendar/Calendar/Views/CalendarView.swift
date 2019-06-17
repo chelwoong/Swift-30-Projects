@@ -9,6 +9,7 @@
 import UIKit
 
 class CalendarView: UIView {
+    
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,9 +19,11 @@ class CalendarView: UIView {
     }
     */
     
-    var cellId = "cellId"
     
-    var numberOfDaysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
+    // MARK: - Properties and Variables
+    
+    var cellId = "cellId"
+    var numOfDaysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
     var currentMonthIndex = 0
     var currentYear = 0
     var presentMonthIndex = 0
@@ -30,46 +33,53 @@ class CalendarView: UIView {
     var daysCount = 0
     var dateRowCount = 5
     
-    let calendarCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: CGRect.init(), collectionViewLayout: layout)
-        
-        return collectionView
-    }()
+    
+    // MARK: - LifeCycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        initializeView()
+    }
+    
+    // MARK: - functions
+    
+    func initializeView() {
         currentMonthIndex = Calendar.current.component(.month, from: Date())
         currentYear = Calendar.current.component(.year, from: Date())
         todaysDate = Calendar.current.component(.day, from: Date())
-        
         firstWeekDayOfMonth = getFirstWeekDay()
-
+        
         //for leap years, make february month of 29 days
         if currentMonthIndex == 2 && currentYear % 4 == 0 {
-            numberOfDaysInMonth[currentMonthIndex-1] = 29
+            numOfDaysInMonth[currentMonthIndex-1] = 29
         }
         
-        daysCount = firstWeekDayOfMonth + numberOfDaysInMonth[currentMonthIndex-1] - 1
+        firstWeekDayOfMonth = getFirstWeekDay()
+        
+        daysCount = firstWeekDayOfMonth + numOfDaysInMonth[currentMonthIndex-1] - 1
         daysCount > 35 ? (dateRowCount = 6) : (dateRowCount = 5)
         
-        let weekdaysView = WeekdaysView()
-        self.addSubview(weekdaysView)
-        weekdaysView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: safeAreaLayoutGuide.trailingAnchor, padding: .init(), size: CGSize(width: 0, height: 50))
-        weekdaysView.backgroundColor = UIColor.red
+        setupViews()
         
-        self.addSubview(calendarCollectionView)
-        calendarCollectionView.backgroundColor = UIColor.white
         calendarCollectionView.register(DateCVCell.self, forCellWithReuseIdentifier: cellId)
         calendarCollectionView.delegate = self
         calendarCollectionView.dataSource = self
+
+    }
+    
+    func setupViews() {
+        
+        self.addSubview(monthView)
+        monthView.anchor(top: self.safeAreaLayoutGuide.topAnchor, leading: self.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: self.trailingAnchor, padding: .init(), size: CGSize(width: 0, height: 50))
+        monthView.delegate = self
+        
+        self.addSubview(weekdaysView)
+        weekdaysView.anchor(top: monthView.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: safeAreaLayoutGuide.trailingAnchor, padding: .init(), size: CGSize(width: 0, height: 50))
+        
+        self.addSubview(calendarCollectionView)
+        calendarCollectionView.backgroundColor = UIColor.white
         calendarCollectionView.anchor(top: weekdaysView.bottomAnchor, leading: safeAreaLayoutGuide.leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, trailing: safeAreaLayoutGuide.trailingAnchor)
-        
-        
-        
-        
-        
         
     }
     
@@ -81,9 +91,35 @@ class CalendarView: UIView {
         return day
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Views
+    
+    let monthView: MonthView = {
+        let view = MonthView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
+    let weekdaysView: WeekdaysView = {
+        let view = WeekdaysView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let calendarCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: CGRect.init(), collectionViewLayout: layout)
+        
+        return collectionView
+    }()
+}
+
+extension CalendarView: MonthViewDelegate {
     
 }
 
@@ -96,15 +132,20 @@ extension CalendarView: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? DateCVCell else { return UICollectionViewCell() }
         
-        let day = indexPath.item + 1
-        let presentDay = day - firstWeekDayOfMonth + 1
-        
-        if day < firstWeekDayOfMonth || presentDay >= numberOfDaysInMonth[currentMonthIndex] {
-            cell.isHidden = true
+        let presentDay = indexPath.item - firstWeekDayOfMonth + 2
+        print(currentMonthIndex)
+        if presentDay <= 0 {
+            cell.dateLabel.text = String(numOfDaysInMonth[currentMonthIndex-2] + presentDay)
+            cell.dateLabel.textColor = .gray
+        } else if presentDay > numOfDaysInMonth[currentMonthIndex-1] {
+            cell.dateLabel.text = String(presentDay - numOfDaysInMonth[currentMonthIndex-1])
+            cell.dateLabel.textColor = .gray
+        } else {
+            cell.dateLabel.text = String(presentDay)
+            cell.dateLabel.textColor = .black
         }
+
         
-        cell.dateLabel.text = String(presentDay)
-        cell.backgroundColor = UIColor.orange
         return cell
     }
     
@@ -112,7 +153,29 @@ extension CalendarView: UICollectionViewDataSource {
 }
 
 extension CalendarView: UICollectionViewDelegate {
+    func didChangeMonth(monthIndex: Int, year: Int) {
+        currentMonthIndex = monthIndex + 1
+        currentYear = year
+        
+        
+        //for leap years, make february month of 29 days
+        if monthIndex == 1 {
+            if currentYear % 4 == 0 {
+                numOfDaysInMonth[monthIndex] = 29
+            } else {
+                numOfDaysInMonth[monthIndex] = 28
+            }
+        }
+        
+        firstWeekDayOfMonth = getFirstWeekDay()
+        daysCount = firstWeekDayOfMonth + numOfDaysInMonth[currentMonthIndex-1] - 1
+        daysCount > 35 ? (dateRowCount = 6) : (dateRowCount = 5)
 
+        calendarCollectionView.reloadData()
+        
+
+        monthView.btnLeft.isEnabled = !(currentMonthIndex == presentMonthIndex && currentYear == presentYear)
+    }
 }
 
 extension CalendarView: UICollectionViewDelegateFlowLayout {
