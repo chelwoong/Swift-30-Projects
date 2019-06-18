@@ -9,20 +9,28 @@
 import UIKit
 
 class CalendarViewController: UIViewController {
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-
-        let calendarView = CalendarView()
-        view.addSubview(calendarView)
-        calendarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         
+        setupViews()
         
     }
-
+    
+    func setupViews() {
+        view.backgroundColor = UIColor.white
+        navigationItem.title = "Calendar"
+        
+        view.addSubview(calendarView)
+        calendarView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+    }
+    
+    let calendarView: CalendarView = {
+        let view = CalendarView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
 
 }
 

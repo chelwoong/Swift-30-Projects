@@ -120,7 +120,28 @@ class CalendarView: UIView {
 }
 
 extension CalendarView: MonthViewDelegate {
-    
+    func didChangeMonth(monthIndex: Int, year: Int) {
+        currentMonthIndex = monthIndex + 1
+        currentYear = year
+        
+        //for leap years, make february month of 29 days
+        if monthIndex == 1 {
+            if currentYear % 4 == 0 {
+                numOfDaysInMonth[monthIndex] = 29
+            } else {
+                numOfDaysInMonth[monthIndex] = 28
+            }
+        }
+        
+        firstWeekDayOfMonth = getFirstWeekDay()
+        daysCount = firstWeekDayOfMonth + numOfDaysInMonth[currentMonthIndex-1] - 1
+        daysCount > 35 ? (dateRowCount = 6) : (dateRowCount = 5)
+        
+        calendarCollectionView.reloadData()
+        
+        
+        monthView.btnLeft.isEnabled = !(currentMonthIndex == presentMonthIndex && currentYear == presentYear)
+    }
 }
 
 extension CalendarView: UICollectionViewDataSource {
@@ -133,9 +154,8 @@ extension CalendarView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? DateCVCell else { return UICollectionViewCell() }
         
         let presentDay = indexPath.item - firstWeekDayOfMonth + 2
-        print(currentMonthIndex)
         if presentDay <= 0 {
-            cell.dateLabel.text = String(numOfDaysInMonth[currentMonthIndex-2] + presentDay)
+            cell.dateLabel.text = String(numOfDaysInMonth[currentMonthIndex-1] + presentDay)
             cell.dateLabel.textColor = .gray
         } else if presentDay > numOfDaysInMonth[currentMonthIndex-1] {
             cell.dateLabel.text = String(presentDay - numOfDaysInMonth[currentMonthIndex-1])
@@ -153,29 +173,21 @@ extension CalendarView: UICollectionViewDataSource {
 }
 
 extension CalendarView: UICollectionViewDelegate {
-    func didChangeMonth(monthIndex: Int, year: Int) {
-        currentMonthIndex = monthIndex + 1
-        currentYear = year
-        
-        
-        //for leap years, make february month of 29 days
-        if monthIndex == 1 {
-            if currentYear % 4 == 0 {
-                numOfDaysInMonth[monthIndex] = 29
-            } else {
-                numOfDaysInMonth[monthIndex] = 28
-            }
-        }
-        
-        firstWeekDayOfMonth = getFirstWeekDay()
-        daysCount = firstWeekDayOfMonth + numOfDaysInMonth[currentMonthIndex-1] - 1
-        daysCount > 35 ? (dateRowCount = 6) : (dateRowCount = 5)
-
-        calendarCollectionView.reloadData()
-        
-
-        monthView.btnLeft.isEnabled = !(currentMonthIndex == presentMonthIndex && currentYear == presentYear)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath)
+//
+//        cell?.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+//        guard let lbl = cell?.subviews[1] as? UILabel else {fatalError()}
+//        lbl.textColor = .white
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        let cell = collectionView.cellForItem(at: indexPath)
+//
+//        cell?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        guard let lbl = cell?.subviews[1] as? UILabel else {fatalError()}
+//        lbl.textColor = .black
+//    }
 }
 
 extension CalendarView: UICollectionViewDelegateFlowLayout {

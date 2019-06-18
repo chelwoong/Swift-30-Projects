@@ -45,6 +45,7 @@ class MonthView: UIView {
     func btnLeftRightAction(sender: UIButton) {
         if sender == btnRight {
             currentMonthIndex += 1
+            print(currentMonthIndex)
             if currentMonthIndex > 11 {
                 currentYear += 1
                 currentMonthIndex = 0
