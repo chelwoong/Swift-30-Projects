@@ -35,14 +35,11 @@ class ViewController: UIViewController {
     }
     
     private func configureTapGesture() {
-        print("tapGesture")
-
-        let tapGesture = UIGestureRecognizer(target: self, action: #selector(ViewController.handleTap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap))
         view.addGestureRecognizer(tapGesture)
     }
     
     @objc func handleTap() {
-        print("handle")
         view.endEditing(true)
     }
     
@@ -51,9 +48,10 @@ class ViewController: UIViewController {
         btnMinus.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
         btnDivision.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
         btnMultiplication.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
+        textFieldResult.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         
         configureTextFields()
-//        configureTapGesture()
+        configureTapGesture()
     }
     
     // MARK: - Views
@@ -70,7 +68,6 @@ class ViewController: UIViewController {
         switch sender {
         case btnPlus:
             print("plus")
-//            view.endEditing(true)
         case btnMinus:
             print("minus")
         case btnDivision:
@@ -80,6 +77,11 @@ class ViewController: UIViewController {
         default:
             print("df")
         }
+        view.endEditing(true)
+    }
+    
+    @objc func textFieldEditingChanged(_ sender: UITextField) {
+        print(sender.text)
     }
 }
 
