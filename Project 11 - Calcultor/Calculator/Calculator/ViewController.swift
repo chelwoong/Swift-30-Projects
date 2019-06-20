@@ -94,17 +94,10 @@ extension ViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        do {
-            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z].*", options: [])
-            if regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) != nil {
-                return false
-            }
-        }
-        catch {
-            print("ERROR")
-        }
         
-        return true
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
     }
     
 }
