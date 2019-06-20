@@ -45,8 +45,12 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXC-BJ-6D7">
-                                <rect key="frame" x="50" y="616" width="314" height="30"/>
+                                <rect key="frame" x="50" y="696" width="314" height="30"/>
                                 <state key="normal" title="Clear"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP6-uK-4LB">
+                                <rect key="frame" x="50" y="616" width="314" height="30"/>
+                                <state key="normal" title="="/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,14 +59,17 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7wE-ad-Sui" secondAttribute="trailing" constant="100" id="40K-WG-3db"/>
                             <constraint firstItem="1Ew-I7-gYL" firstAttribute="top" secondItem="PlG-wT-W4V" secondAttribute="bottom" constant="50" id="DU4-Ox-Xmn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RIC-eb-iC1" secondAttribute="trailing" constant="50" id="DXv-PV-HaU"/>
+                            <constraint firstItem="WXC-BJ-6D7" firstAttribute="top" secondItem="oP6-uK-4LB" secondAttribute="bottom" constant="50" id="F2M-7N-hOB"/>
                             <constraint firstItem="RIC-eb-iC1" firstAttribute="top" secondItem="1Ew-I7-gYL" secondAttribute="bottom" constant="50" id="PIm-5q-gXj"/>
                             <constraint firstItem="7wE-ad-Sui" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="VF5-73-qey"/>
-                            <constraint firstItem="WXC-BJ-6D7" firstAttribute="top" secondItem="sbW-8w-Axu" secondAttribute="bottom" constant="50" id="WYe-yb-Jck"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PlG-wT-W4V" secondAttribute="trailing" constant="50" id="b12-P9-O8X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oP6-uK-4LB" secondAttribute="trailing" constant="50" id="e9k-Ir-WQI"/>
                             <constraint firstItem="WXC-BJ-6D7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="f4M-bj-dfC"/>
+                            <constraint firstItem="oP6-uK-4LB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="gLj-IW-qQe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sbW-8w-Axu" secondAttribute="trailing" constant="50" id="gVf-nd-JJP"/>
                             <constraint firstItem="RIC-eb-iC1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="lPg-G7-0M0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WXC-BJ-6D7" secondAttribute="trailing" constant="50" id="mYH-Kq-LAb"/>
+                            <constraint firstItem="oP6-uK-4LB" firstAttribute="top" secondItem="sbW-8w-Axu" secondAttribute="bottom" constant="50" id="mgt-eB-x6l"/>
                             <constraint firstItem="PlG-wT-W4V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="pkB-Xj-GhR"/>
                             <constraint firstItem="sbW-8w-Axu" firstAttribute="top" secondItem="RIC-eb-iC1" secondAttribute="bottom" constant="50" id="sKE-op-WaP"/>
                             <constraint firstItem="7wE-ad-Sui" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="v04-Lf-q3P"/>
@@ -73,7 +80,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="btnClear" destination="WXC-BJ-6D7" id="8Jf-bX-nLa"/>
                         <outlet property="btnDivision" destination="RIC-eb-iC1" id="9hv-gw-32h"/>
+                        <outlet property="btnEqual" destination="oP6-uK-4LB" id="cOR-Mf-95c"/>
                         <outlet property="btnMinus" destination="1Ew-I7-gYL" id="5jJ-Au-G1x"/>
                         <outlet property="btnMultiplication" destination="sbW-8w-Axu" id="19l-kH-ujp"/>
                         <outlet property="btnPlus" destination="PlG-wT-W4V" id="KTL-YX-qWH"/>

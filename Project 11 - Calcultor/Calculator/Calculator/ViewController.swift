@@ -18,7 +18,8 @@ enum btnCalculator {
 class ViewController: UIViewController {
     
     // MARK: - Variables and Propertise
-    
+    var nowValue: Int = 0
+    var total: Int = 0
     
     // MARK: - LifeCycle
     
@@ -30,6 +31,36 @@ class ViewController: UIViewController {
     
     // MARK: - functions
     
+    func add() {
+        total += nowValue
+        textFieldResult.text = "\(total)"
+    }
+    
+    func subtract() {
+        total -= nowValue
+        textFieldResult.text = "\(total)"
+    }
+    
+    func multiply() {
+        total *= nowValue
+        textFieldResult.text = "\(total)"
+    }
+    
+    func divide() {
+        total /= nowValue
+        textFieldResult.text = "\(total)"
+    }
+    
+    func clear() {
+        total = 0
+        nowValue = 0
+        textFieldResult.text = "\(0)"
+    }
+    
+    func equal() {
+        textFieldResult.text = "\(total)"
+    }
+    
     func configureTextFields() {
         textFieldResult.delegate = self
     }
@@ -40,8 +71,7 @@ class ViewController: UIViewController {
     }
     
     @objc func handleTap() {
-//        view.endEditing(true)
-        textFieldResult.resignFirstResponder()
+        view.endEditing(true)
     }
     
     func setupViews() {
@@ -49,12 +79,13 @@ class ViewController: UIViewController {
         btnMinus.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
         btnDivision.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
         btnMultiplication.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
+        btnEqual.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
+        btnClear.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
         textFieldResult.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         
         configureTextFields()
         configureTapGesture()
     }
-    
     
     // MARK: - Views
     
@@ -63,27 +94,46 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnMinus: UIButton!
     @IBOutlet weak var btnDivision: UIButton!
     @IBOutlet weak var btnMultiplication: UIButton!
+    @IBOutlet weak var btnClear: UIButton!
+    @IBOutlet weak var btnEqual: UIButton!
     
     // MARK: - Actions
 
     @objc func btnAction(sender: UIButton) {
+        let active = textFieldResult.isEditing
         switch sender {
         case btnPlus:
-            print("plus")
+            if active {
+                add()
+            }
         case btnMinus:
-            print("minus")
+            if active {
+                subtract()
+            }
         case btnDivision:
-            print("division")
+            if active {
+                divide()
+            }
         case btnMultiplication:
-            print("multiple")
+            if active {
+                multiply()
+            }
+        case btnEqual:
+            if active {
+                equal()
+            }
+        case btnClear:
+            clear()
         default:
-            print("df")
+            print("default")
         }
         view.endEditing(true)
     }
     
     @objc func textFieldEditingChanged(_ sender: UITextField) {
-        print(sender.text)
+        if let text = sender.text, let value = Int(text) {
+            nowValue = value
+        }
     }
 }
 
@@ -93,8 +143,17 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textFieldResult.text = ""
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    // restrict textfieid to numbers
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+    
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
