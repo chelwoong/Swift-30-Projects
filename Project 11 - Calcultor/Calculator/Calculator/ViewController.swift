@@ -40,7 +40,8 @@ class ViewController: UIViewController {
     }
     
     @objc func handleTap() {
-        view.endEditing(true)
+//        view.endEditing(true)
+        textFieldResult.resignFirstResponder()
     }
     
     func setupViews() {
@@ -53,6 +54,7 @@ class ViewController: UIViewController {
         configureTextFields()
         configureTapGesture()
     }
+    
     
     // MARK: - Views
     
@@ -90,4 +92,19 @@ extension ViewController: UITextFieldDelegate {
         textFieldResult.resignFirstResponder()
         return true
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z].*", options: [])
+            if regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) != nil {
+                return false
+            }
+        }
+        catch {
+            print("ERROR")
+        }
+        
+        return true
+    }
+    
 }
