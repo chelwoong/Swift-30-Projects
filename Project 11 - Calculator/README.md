@@ -6,7 +6,7 @@ make Simple Calculator
 
 ## 배운내용
 - Calculator
-  - using UITextfield input 
+  - using UITextfield delegate
   - decimal point
 
 ## TODO
