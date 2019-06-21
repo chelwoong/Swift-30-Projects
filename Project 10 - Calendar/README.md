@@ -10,5 +10,6 @@ Simpel Calendar, I referred to [this tutorial](https://www.youtube.com/watch?v=s
   - calculate date
 
 ## TODO
+- [ ] set colors weekend
 - [ ] add schedule
 - [ ] create flexible screen when raise
