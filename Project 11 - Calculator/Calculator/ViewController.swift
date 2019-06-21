@@ -8,16 +8,10 @@
 
 import UIKit
 
-enum btnCalculator {
-    case plus
-    case minus
-    case division
-    case multiplication
-}
-
 class ViewController: UIViewController {
     
     // MARK: - Variables and Propertise
+    
     var nowValue: Double = 0
     var total: Double = 0
     
