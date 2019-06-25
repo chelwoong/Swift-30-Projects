@@ -11,10 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - Variables and Propertise
-    
     var nowValue: Double = 0
     var total: Double = 0
-    
+
     // MARK: - LifeCycle
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -91,12 +90,12 @@ class ViewController: UIViewController {
     }
     
     func setupViews() {
-        btnPlus.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
-        btnMinus.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
-        btnDivision.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
-        btnMultiplication.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
-        btnEqual.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
-        btnClear.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
+        let buttonArray: [UIButton] = [btnPlus, btnMinus, btnDivision, btnMultiplication, btnEqual, btnClear]
+        
+        for button in buttonArray {
+            button.addTarget(self, action: #selector(btnAction(sender:)), for: .touchUpInside)
+        }
+        
         textFieldResult.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         
         configureTextFields()
