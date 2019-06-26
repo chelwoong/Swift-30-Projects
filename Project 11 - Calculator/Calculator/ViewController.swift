@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setupViews()
     }
     
@@ -31,38 +30,27 @@ class ViewController: UIViewController {
     
     func add() {
         total += nowValue
-        if (total - Double(Int(total))) != 0 {
-            textFieldResult.text = "\(total)"
-        } else {
-            textFieldResult.text = String(format: "%.f", total)
-        }
+        setTextField()
     }
     
     func subtract() {
         total -= nowValue
-        if (total - Double(Int(total))) != 0 {
-            textFieldResult.text = "\(total)"
-        } else {
-            textFieldResult.text = String(format: "%.f", total)
-        }
+        setTextField()
     }
     
     func multiply() {
         total *= nowValue
-        if (total - Double(Int(total))) != 0 {
-            textFieldResult.text = "\(total)"
-        } else {
-            textFieldResult.text = String(format: "%.f", total)
-        }
+        setTextField()
     }
     
     func divide() {
+        // 예외처리
         total /= nowValue
-        if (total - Double(Int(total))) != 0 {
-            textFieldResult.text = "\(total)"
-        } else {
-            textFieldResult.text = String(format: "%.f", total)
+        if (total.isNaN || total.isInfinite) {
+            total = 0
+            nowValue = 0
         }
+        setTextField()
         
     }
     
@@ -74,6 +62,14 @@ class ViewController: UIViewController {
     
     func equal() {
         textFieldResult.text = "\(total)"
+    }
+    
+    func setTextField() {
+        if (total - Double(Int(total))) != 0 {
+            textFieldResult.text = "\(total)"
+        } else {
+            textFieldResult.text = String(format: "%.f", total)
+        }
     }
     
     func configureTextFields() {
@@ -115,33 +111,46 @@ class ViewController: UIViewController {
     // MARK: - Actions
 
     @objc func btnAction(sender: UIButton) {
+        guard let tag: CalculationOperator = CalculationOperator(rawValue: sender.tag) else {return}
         let active = textFieldResult.isEditing
-        switch sender {
-        case btnPlus:
-            if active {
-                add()
-            }
-        case btnMinus:
-            if active {
-                subtract()
-            }
-        case btnDivision:
-            if active {
-                divide()
-            }
-        case btnMultiplication:
-            if active {
-                multiply()
-            }
-        case btnEqual:
-            if active {
-                equal()
-            }
-        case btnClear:
-            clear()
-        default:
-            print("default")
+        
+        enum CalculationOperator: Int {
+            case plus = 1
+            case minus
+            case division
+            case multiple
+            case equal
         }
+        
+        
+        
+        if active {
+            switch tag {
+            case .plus where active == true:
+                    add()
+            case .minus:
+                if active {
+                    subtract()
+                }
+            case .division:
+                if active {
+                    divide()
+                }
+            case .multiple:
+                if active {
+                    multiply()
+                }
+            case .equal:
+                if active {
+                    equal()
+                }
+            default:
+                print("default")
+            }
+        } else if sender == btnClear {
+            clear()
+        }
+
         view.endEditing(true)
     }
     
