@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     var barTitle = ""
     var animation: Animation = .changeColor
     var animateView: UIView!
-    fileprivate let duration = 2.0
+    fileprivate let duration = 1.0
     fileprivate let delay = 0.2
     fileprivate let scale = 1.2
     
@@ -97,6 +97,7 @@ class DetailViewController: UIViewController {
         }) { _ in
             self.autoChangeColor()
         }
+        
     }
     
     fileprivate func colorFrameChange(_ firstFrame: CGRect, _ secondFrame: CGRect, _ thirdFrame: CGRect,
@@ -140,7 +141,6 @@ class DetailViewController: UIViewController {
     fileprivate func curvePath(_ endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {
         let path = UIBezierPath()
         path.move(to: self.animateView.center)
-        
         path.addCurve(to: endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
         
         // create a new CAKeyframeAnimation that animates the objects position
