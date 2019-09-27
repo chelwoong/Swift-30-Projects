@@ -23,11 +23,27 @@ UIView.animate(withDuration: TimeInterval, animations: () -> Void, completion: (
 2D 그래픽을 그리기 위한 Affine 변환 메트릭스를 뜻한다.
 
 affine transformation matrix는 object를 회전, 축적, 변환하고 그리는데 사용된다. 깊게 들어가면 벌써부터 머리가 아프지만.. 다행히 친절히 애플에서 제공해주기 때문에 우리는 쉽게 사용할 수 있다. 
-  ```swift
-    UIView.animate(withDuration: self.duration, delay: self.delay, options: [.repeat], animations: {
-    					    self.animateView.transform = CGAffineTransform(rotationAngle: CGFloat(angel))
-    					}, completion: nil)
-  ```
+```swift
+/// when table reload
+// 
+// move all cells to the bottom of the screen
+for cell in cells {
+    cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+}
+
+// move all cells from bottom to the right place
+for cell in cells {
+    UIView.animate(withDuration: duration, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+        cell.transform = CGAffineTransform(translationX: 0, y: 0)
+    }, completion: nil)
+    index += 1
+}
+
+/// when rotation
+UIView.animate(withDuration: self.duration, delay: self.delay, options: [.repeat], animations: {
+    self.animateView.transform = CGAffineTransform(rotationAngle: CGFloat(angel))
+}, completion: nil)
+```
 ### UIBezierPath
 
 직선이나 곡선을 원하는대로 렌더링하기 위해 사용한다. 경로를 다시 그리는 느낌으로 생각하면 될듯하다.
