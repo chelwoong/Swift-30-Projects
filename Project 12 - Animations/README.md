@@ -1,5 +1,6 @@
 # Animations
-Fun Animations!!
+Fun Animations!!  
+I was reference [soapyigu's Swift-30-Project](https://github.com/soapyigu/Swift-30-Projects/tree/master/Project%2011%20-%20Animations)
 
 ### Screenshot
 <img src="Animations.gif" width= "250" />
