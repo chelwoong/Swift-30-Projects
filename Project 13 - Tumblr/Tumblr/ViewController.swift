@@ -20,45 +20,46 @@ class ViewController: UIViewController {
 
     func setupViews() {
         
-        let toolbar = UIToolbar()
+        let toolbar = UIToolbar(frame: .init(x: 0, y: 0, width: 100, height: 100))
         view.addSubview(toolbar)
         toolbar.barTintColor = .black
-
+        
         toolbar.translatesAutoresizingMaskIntoConstraints = false
+        
+        toolbar.heightAnchor.constraint(equalToConstant: 50).isActive = true
         toolbar.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 0).isActive = true
         toolbar.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 0).isActive = true
         toolbar.trailingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.trailingAnchor, multiplier: 0).isActive = true
-        
-//        toolBar.center = CGPoint(x: view.frame.width/2, y: self.view.frame.height - toolBarHeight)
         
         var items: [UIBarButtonItem] = []
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        let toolbarItem1 = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
-        let toolbarItem2 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-        let toolbarItem3 = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil)
+        let searchItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+        let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItemTapped(_:)))
+        let refreshItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil)
 
-        items.append(toolbarItem1)
-//        items.append(flexibleSpace)
-        items.append(toolbarItem2)
-//        items.append(flexibleSpace)
-//        items.append(toolbarItem3)
-        
+        items.append(searchItem)
+        items.append(flexibleSpace)
+        items.append(addItem)
+        items.append(flexibleSpace)
+        items.append(refreshItem)
+
         items.forEach { (item) in
             item.tintColor = .orange
         }
-        
-        
-        toolbar.setItems(items, animated: true)
-        
-        
-        
-        
-//        toolBar.setItems(<#T##items: [UIBarButtonItem]?##[UIBarButtonItem]?#>, animated: <#T##Bool#>)
-        
+
+        toolbar.items = items
+//        toolbar.setItems(items, animated: true)
         
     }
+    
+    @objc func addItemTapped(_ button: UIBarButtonItem) {
+        
+        let menuVC = MenuViewController()
+        self.present(menuVC, animated: true, completion: nil)
+    }
+    
 
 }
 
