@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6ED3B661238CB3B500B13522 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3B660238CB3B500B13522 /* MenuViewController.swift */; };
+		6ED3B687238D191D00B13522 /* UIView+anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3B686238D191D00B13522 /* UIView+anchor.swift */; };
 		6ED7DE822342DD1F004F5B4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7DE812342DD1F004F5B4F /* AppDelegate.swift */; };
 		6ED7DE842342DD1F004F5B4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7DE832342DD1F004F5B4F /* ViewController.swift */; };
 		6ED7DE892342DD1F004F5B4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED7DE882342DD1F004F5B4F /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6ED3B660238CB3B500B13522 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		6ED3B686238D191D00B13522 /* UIView+anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+anchor.swift"; sourceTree = "<group>"; };
 		6ED7DE7E2342DD1F004F5B4F /* Tumblr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumblr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED7DE812342DD1F004F5B4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6ED7DE832342DD1F004F5B4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +60,9 @@
 				6ED7DE832342DD1F004F5B4F /* ViewController.swift */,
 				6ED7DE882342DD1F004F5B4F /* Assets.xcassets */,
 				6ED7DE8A2342DD1F004F5B4F /* LaunchScreen.storyboard */,
+				6ED3B660238CB3B500B13522 /* MenuViewController.swift */,
 				6ED7DE8D2342DD1F004F5B4F /* Info.plist */,
+				6ED3B686238D191D00B13522 /* UIView+anchor.swift */,
 			);
 			path = Tumblr;
 			sourceTree = "<group>";
@@ -132,6 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ED7DE842342DD1F004F5B4F /* ViewController.swift in Sources */,
+				6ED3B687238D191D00B13522 /* UIView+anchor.swift in Sources */,
+				6ED3B661238CB3B500B13522 /* MenuViewController.swift in Sources */,
 				6ED7DE822342DD1F004F5B4F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
