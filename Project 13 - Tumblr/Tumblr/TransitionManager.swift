@@ -12,6 +12,7 @@ class TransitionManager: NSObject {
     fileprivate var isPresent = false
 }
 
+// MARK: - UIViewControllerAnimatedTransitioning
 extension TransitionManager: UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
@@ -30,12 +31,12 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
             transitionContext.viewController(forKey: .to)!
         )
         
-        let menuViewController = isPresent
+        let menuViewController = !isPresent
             ? screens.from as! MenuViewController
             : screens.to as! MenuViewController
-        let mainViewController = isPresent
-        ? screens.to as! MenuViewController
-        : screens.from as! MenuViewController
+        let mainViewController = !isPresent
+        ? screens.to as! UIViewController
+        : screens.from as! UIViewController
         
         let menuView = menuViewController.view
         let mainView = mainViewController.view
@@ -50,11 +51,41 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
         let duration = self.transitionDuration(using: transitionContext)
         
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
-            if isPresent {
-                // onstageMenu
+            if self.isPresent {
+                self.onStageMenuController(menuViewController)
+            } else {
+                self.offStageMenuController(menuViewController)
             }
-        }, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+        }) { (finished) in
+            transitionContext.completeTransition(true)
+            UIApplication.shared.keyWindow?.addSubview(screens.to.view)
+        }
         
+    }
+    
+    func onStageMenuController(_ menuViewController: MenuViewController){
+      
+      // prepare menu to fade in
+      menuViewController.view.alpha = 1
+      
+      menuViewController.textPostIcon.transform = CGAffineTransform.identity
+      menuViewController.textPostLabel.transform = CGAffineTransform.identity
+      
+      menuViewController.quotePostIcon.transform = CGAffineTransform.identity
+      menuViewController.quotePostLabel.transform = CGAffineTransform.identity
+      
+      menuViewController.chatPostIcon.transform = CGAffineTransform.identity
+      menuViewController.chatPostLabel.transform = CGAffineTransform.identity
+      
+      menuViewController.photoPostIcon.transform = CGAffineTransform.identity
+      menuViewController.photoPostLabel.transform = CGAffineTransform.identity
+      
+      menuViewController.linkPostIcon.transform = CGAffineTransform.identity
+      menuViewController.linkPostLabel.transform = CGAffineTransform.identity
+      
+      menuViewController.audioPostIcon.transform = CGAffineTransform.identity
+      menuViewController.audioPostLabel.transform = CGAffineTransform.identity
+      
     }
     
     func offStageMenuController(_ menuViewController: MenuViewController) {
@@ -82,5 +113,18 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
         
         menuViewController.audioPostIcon.transform = self.offStage(bottomRowOffset)
         menuViewController.audioPostLabel.transform = self.offStage(bottomRowOffset)
+    }
+}
+
+// MARK: UIViewControllerTransitioningDelegate
+extension TransitionManager: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      self.isPresent = true
+      return self
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      self.isPresent = false
+      return self
     }
 }

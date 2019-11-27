@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
+    
+    let transitionManager = TransitionManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .darkGray
+        self.transitioningDelegate = transitionManager
+        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
         setupViews()
     }
@@ -46,7 +48,7 @@ class ViewController: UIViewController {
         items.append(refreshItem)
 
         items.forEach { (item) in
-            item.tintColor = .orange
+            item.tintColor = .white
         }
 
         toolbar.items = items
@@ -57,6 +59,8 @@ class ViewController: UIViewController {
     @objc func addItemTapped(_ button: UIBarButtonItem) {
         
         let menuVC = MenuViewController()
+        menuVC.modalPresentationStyle = .fullScreen
+//        menuVC.transitioningDelegate = self.transitionManager
         self.present(menuVC, animated: true, completion: nil)
     }
     

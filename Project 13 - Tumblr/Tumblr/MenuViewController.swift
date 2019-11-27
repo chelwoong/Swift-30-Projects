@@ -10,14 +10,22 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    let transitionManager = TransitionManager()
+    
     let cellId = "cellIdentify"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         
-        
+        self.transitioningDelegate = self.transitionManager
         setupViews()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        
     }
     
     func setupViews() {
@@ -38,6 +46,8 @@ class MenuViewController: UIViewController {
         
         view.addSubview(audioPostIcon)
         view.addSubview(audioPostLabel)
+        
+        view.addSubview(cancelButton)
         
         quotePostIcon.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: -80).isActive = true
         quotePostIcon.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 0).isActive = true
@@ -88,6 +98,13 @@ class MenuViewController: UIViewController {
         audioPostIcon.topAnchor.constraint(equalTo: linkPostLabel.bottomAnchor, constant: 60).isActive = true
         audioPostLabel.topAnchor.constraint(equalTo: audioPostIcon.bottomAnchor, constant: 5).isActive = true
         
+        cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        cancelButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        cancelButton.addTarget(self, action: #selector(didTapCancelButton(_:)), for: .touchUpInside)
+    }
+    
+    @objc func didTapCancelButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Views
@@ -198,5 +215,16 @@ class MenuViewController: UIViewController {
         label.font = .systemFont(ofSize: 20, weight: .heavy)
         
         return label
+    }()
+    
+    let cancelButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.frame = .init(x: 0, y: 0, width: 100, height: 100)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .heavy)
+        
+        return button
     }()
 }
