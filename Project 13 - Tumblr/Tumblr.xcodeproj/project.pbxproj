@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6ED3B661238CB3B500B13522 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3B660238CB3B500B13522 /* MenuViewController.swift */; };
+		6ED3B687238D191D00B13522 /* UIView+anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3B686238D191D00B13522 /* UIView+anchor.swift */; };
+		6ED3B689238D258300B13522 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3B688238D258300B13522 /* TransitionManager.swift */; };
 		6ED7DE822342DD1F004F5B4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7DE812342DD1F004F5B4F /* AppDelegate.swift */; };
-		6ED7DE842342DD1F004F5B4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7DE832342DD1F004F5B4F /* ViewController.swift */; };
-		6ED7DE872342DD1F004F5B4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ED7DE852342DD1F004F5B4F /* Main.storyboard */; };
+		6ED7DE842342DD1F004F5B4F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED7DE832342DD1F004F5B4F /* MainViewController.swift */; };
 		6ED7DE892342DD1F004F5B4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED7DE882342DD1F004F5B4F /* Assets.xcassets */; };
 		6ED7DE8C2342DD1F004F5B4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ED7DE8A2342DD1F004F5B4F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6ED3B660238CB3B500B13522 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		6ED3B686238D191D00B13522 /* UIView+anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+anchor.swift"; sourceTree = "<group>"; };
+		6ED3B688238D258300B13522 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		6ED7DE7E2342DD1F004F5B4F /* Tumblr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumblr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED7DE812342DD1F004F5B4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6ED7DE832342DD1F004F5B4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6ED7DE862342DD1F004F5B4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6ED7DE832342DD1F004F5B4F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6ED7DE882342DD1F004F5B4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6ED7DE8B2342DD1F004F5B4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6ED7DE8D2342DD1F004F5B4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +39,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6ED3B6BC2396094900B13522 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6ED3B660238CB3B500B13522 /* MenuViewController.swift */,
+				6ED7DE832342DD1F004F5B4F /* MainViewController.swift */,
+				6ED3B688238D258300B13522 /* TransitionManager.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6ED3B6BD2396095500B13522 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6ED3B686238D191D00B13522 /* UIView+anchor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6ED7DE752342DD1E004F5B4F = {
 			isa = PBXGroup;
 			children = (
@@ -54,9 +76,9 @@
 		6ED7DE802342DD1F004F5B4F /* Tumblr */ = {
 			isa = PBXGroup;
 			children = (
+				6ED3B6BD2396095500B13522 /* Extensions */,
+				6ED3B6BC2396094900B13522 /* Controllers */,
 				6ED7DE812342DD1F004F5B4F /* AppDelegate.swift */,
-				6ED7DE832342DD1F004F5B4F /* ViewController.swift */,
-				6ED7DE852342DD1F004F5B4F /* Main.storyboard */,
 				6ED7DE882342DD1F004F5B4F /* Assets.xcassets */,
 				6ED7DE8A2342DD1F004F5B4F /* LaunchScreen.storyboard */,
 				6ED7DE8D2342DD1F004F5B4F /* Info.plist */,
@@ -124,7 +146,6 @@
 			files = (
 				6ED7DE8C2342DD1F004F5B4F /* LaunchScreen.storyboard in Resources */,
 				6ED7DE892342DD1F004F5B4F /* Assets.xcassets in Resources */,
-				6ED7DE872342DD1F004F5B4F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ED7DE842342DD1F004F5B4F /* ViewController.swift in Sources */,
+				6ED7DE842342DD1F004F5B4F /* MainViewController.swift in Sources */,
+				6ED3B689238D258300B13522 /* TransitionManager.swift in Sources */,
+				6ED3B687238D191D00B13522 /* UIView+anchor.swift in Sources */,
+				6ED3B661238CB3B500B13522 /* MenuViewController.swift in Sources */,
 				6ED7DE822342DD1F004F5B4F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +167,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6ED7DE852342DD1F004F5B4F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6ED7DE862342DD1F004F5B4F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6ED7DE8A2342DD1F004F5B4F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -283,6 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N23K7ZS482;
 				INFOPLIST_FILE = Tumblr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N23K7ZS482;
 				INFOPLIST_FILE = Tumblr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
