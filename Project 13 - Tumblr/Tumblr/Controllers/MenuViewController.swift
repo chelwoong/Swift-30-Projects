@@ -10,10 +10,12 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    // MARK: - Properties
     let transitionManager = TransitionManager()
     
     let cellId = "cellIdentify"
 
+    // MARK: - Initialize
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -103,6 +105,7 @@ class MenuViewController: UIViewController {
         cancelButton.addTarget(self, action: #selector(didTapCancelButton(_:)), for: .touchUpInside)
     }
     
+    // MARK: - Methods
     @objc func didTapCancelButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

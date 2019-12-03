@@ -39,6 +39,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6ED3B6BC2396094900B13522 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6ED3B660238CB3B500B13522 /* MenuViewController.swift */,
+				6ED7DE832342DD1F004F5B4F /* MainViewController.swift */,
+				6ED3B688238D258300B13522 /* TransitionManager.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6ED3B6BD2396095500B13522 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6ED3B686238D191D00B13522 /* UIView+anchor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6ED7DE752342DD1E004F5B4F = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +76,12 @@
 		6ED7DE802342DD1F004F5B4F /* Tumblr */ = {
 			isa = PBXGroup;
 			children = (
+				6ED3B6BD2396095500B13522 /* Extensions */,
+				6ED3B6BC2396094900B13522 /* Controllers */,
 				6ED7DE812342DD1F004F5B4F /* AppDelegate.swift */,
-				6ED7DE832342DD1F004F5B4F /* MainViewController.swift */,
 				6ED7DE882342DD1F004F5B4F /* Assets.xcassets */,
 				6ED7DE8A2342DD1F004F5B4F /* LaunchScreen.storyboard */,
-				6ED3B660238CB3B500B13522 /* MenuViewController.swift */,
 				6ED7DE8D2342DD1F004F5B4F /* Info.plist */,
-				6ED3B686238D191D00B13522 /* UIView+anchor.swift */,
-				6ED3B688238D258300B13522 /* TransitionManager.swift */,
 			);
 			path = Tumblr;
 			sourceTree = "<group>";

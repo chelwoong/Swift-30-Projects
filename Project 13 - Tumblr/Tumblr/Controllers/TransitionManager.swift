@@ -35,8 +35,8 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
             ? screens.from as! MenuViewController
             : screens.to as! MenuViewController
         let mainViewController = !isPresent
-        ? screens.to as! UIViewController
-        : screens.from as! UIViewController
+        ? screens.to
+        : screens.from
         
         let menuView = menuViewController.view
         let mainView = mainViewController.view
@@ -50,7 +50,13 @@ extension TransitionManager: UIViewControllerAnimatedTransitioning {
         
         let duration = self.transitionDuration(using: transitionContext)
         
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.8,
+            options: [],
+            animations: {
             if self.isPresent {
                 self.onStageMenuController(menuViewController)
             } else {

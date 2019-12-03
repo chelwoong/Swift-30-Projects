@@ -10,8 +10,10 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    // MARK: - Properties
     let transitionManager = TransitionManager()
 
+    // MARK: - Initialize
     override func viewDidLoad() {
         super.viewDidLoad()
         self.transitioningDelegate = transitionManager
@@ -52,15 +54,14 @@ class MainViewController: UIViewController {
         }
 
         toolbar.items = items
-//        toolbar.setItems(items, animated: true)
         
     }
     
+    // MARK: Methods
     @objc func addItemTapped(_ button: UIBarButtonItem) {
         
         let menuVC = MenuViewController()
         menuVC.modalPresentationStyle = .fullScreen
-//        menuVC.transitioningDelegate = self.transitionManager
         self.present(menuVC, animated: true, completion: nil)
     }
     
